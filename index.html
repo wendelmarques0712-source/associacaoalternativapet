@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 :root {
-  /* Cores baseadas na identidade da Associação Alternativa */
   --green-dark: #113620;
   --green-mid: #1d5632;
   --green-light: #2c854c;
@@ -48,7 +47,6 @@ nav {
 }
 .nav-logo { display: flex; align-items: center; text-decoration: none; }
 .nav-logo img { max-height: 38px; width: auto; display: block; }
-
 .nav-btn {
   background: var(--orange); color: white;
   font-family: var(--font); font-weight: 700; font-size: 0.85rem;
@@ -66,7 +64,6 @@ nav {
   transition: all .3s ease; text-decoration: none; white-space: nowrap;
   box-shadow: 0 6px 16px rgba(239, 117, 34, 0.25);
 }
-.btn-orange i { font-size: 1.1rem; } 
 .btn-orange:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(239, 117, 34, 0.35); }
 
 .btn-outline-white {
@@ -78,16 +75,7 @@ nav {
 }
 .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
 
-.btn-outline {
-  background: transparent; color: var(--green-dark);
-  font-family: var(--font); font-weight: 500; font-size: 0.95rem;
-  padding: 14px 30px; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px;
-  cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
-  transition: all .3s ease; text-decoration: none;
-}
-.btn-outline:hover { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.25); transform: translateY(-2px); }
-
-/* HERO (VOLTANDO COM CARROSSEL E BADGES) */
+/* HERO (SEM TEXTURA DE FUNDO) */
 .hero {
   background: var(--green-mid);
   display: grid; grid-template-columns: 1.1fr 0.9fr;
@@ -99,17 +87,6 @@ nav {
   background: radial-gradient(ellipse 60% 80% at 30% 50%, rgba(44,133,76,0.3) 0%, transparent 70%);
   pointer-events: none; z-index: 1;
 }
-
-/* Textura Mobile e Fundo */
-.hero-bg-pattern {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.05;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23ffffff"><path d="M226.5 92.9c14.3 7.3 22.8 23 21 39.2-2.3 21-18.7 39.3-39.7 42.7-22.5 3.7-43.2-12-46.7-34.5-2.6-16.5 4.3-32.9 17.5-41.9 13.9-9.5 33.1-12.8 47.9-5.5zM388 135c-21.2-3.1-40.8 12.3-43 33.5-1.9 17.6 7 34.6 22.3 42.4 14.6 7.4 33.5 6 46.5-3.8 15.6-11.7 21.6-32.3 14.3-50.5-5.9-14.7-20.2-24.3-40.1-21.6zM286.4 186.2c-23-2.1-43.6 12.5-47.5 35.1-3 17.3 3.6 34.9 16.8 44.8 13.9 10.4 33.7 12 48.6 3.9 16.4-9 24.3-29.2 18.2-46.6-5.2-14.5-19.1-24.4-36.1-37.2zM216.5 258.4c-22.3-3-42.6 11-47.2 33.2-3.5 17.1 2.3 34.9 15 45.4 13.3 11 33.5 13.5 48.6 5.8 16.7-8.5 25.4-28.4 20-46-5-14.4-18.5-24.7-36.4-38.4zM321.7 289c-20.5-4-39.9 9.8-45.1 30.2-4.1 16.3.7 34.1 12.4 45.4 12.1 11.7 31.8 15.2 46.9 8.2 16.9-7.8 26.6-27.1 22.3-45-4.4-14.5-17.1-25.5-36.5-38.8z"/></svg>');
-  background-size: 100px;
-  background-repeat: repeat;
-  animation: bgMove 40s linear infinite;
-}
-@keyframes bgMove { from { background-position: 0 0; } to { background-position: -200px 200px; } }
-
 .hero-left {
   display: flex; flex-direction: column; justify-content: center;
   padding: clamp(3rem,6vw,5rem) 0 clamp(3rem,6vw,5rem) clamp(2rem,6vw,4.5rem);
@@ -133,10 +110,6 @@ nav {
   font-size: clamp(0.95rem,1.3vw,1.1rem); font-weight: 300;
   color: rgba(255,255,255,0.85); max-width: 500px; line-height: 1.7; margin-bottom: 2rem;
 }
-.hero-btns {
-  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-  animation: fadeUp .5s .3s ease both;
-}
 
 .hero-right {
   position: relative; display: flex; align-items: center; justify-content: center;
@@ -154,13 +127,12 @@ nav {
 }
 .hero-carousel img.active { opacity: 1; }
 
-/* Setas e Badges do Carrossel */
+/* Setas e Badges */
 .carousel-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
   background: rgba(255,255,255,0.2); border: none; color: white;
   width: 44px; height: 44px; border-radius: 50%; cursor: pointer; z-index: 5; backdrop-filter: blur(5px);
 }
-.carousel-arrow:hover { background: rgba(255,255,255,0.4); }
 .carousel-arrow.prev { left: -22px; }
 .carousel-arrow.next { right: -22px; }
 
@@ -180,6 +152,55 @@ nav {
 .dot { width: 8px; height: 8px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; }
 .dot.active { background: white; width: 18px; border-radius: 10px; }
 
+/* SEÇÃO SINTOMAS (TÍTULO PONTA A PONTA E ALTURA REDUZIDA) */
+.sintomas-sec { 
+  background: var(--sand); 
+  overflow: hidden; 
+  padding: 4rem clamp(2rem,6vw,3rem) 5rem; /* Margens otimizadas */
+}
+
+/* Header da seção (Ponta a ponta e centralizado) */
+.sintomas-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.sintomas-header .sec-title {
+  max-width: 100%;
+}
+.sintomas-header .sec-desc {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Layout 2 colunas para os botões e pets */
+.sintomas-layout { 
+  display: grid; 
+  grid-template-columns: 0.8fr 1.2fr; 
+  gap: 2rem; 
+  align-items: center; 
+}
+
+/* Animação de Pets Sólidos (Tamanhos reduzidos para não esticar a seção) */
+.sint-anim-container { position: relative; width: 100%; aspect-ratio: 1/1; display: flex; align-items: flex-end; justify-content: center; }
+.pet-group { position: relative; display: flex; align-items: flex-end; width: 100%; justify-content: center; }
+.solid-dog { font-size: 13rem; color: var(--green-mid); z-index: 1; transform-origin: bottom center; animation: breathe 4s ease-in-out infinite; }
+.solid-cat { font-size: 7.5rem; color: var(--orange); z-index: 2; margin-left: -2.5rem; animation: breathe 4s ease-in-out infinite 1s; }
+.floating-element { position: absolute; z-index: 3; animation: floatOrganic 5s ease-in-out infinite; }
+.leaf-cannabis { color: var(--green-light); font-size: 3.5rem; top: 35%; right: 20%; }
+.heart-health { color: var(--orange); font-size: 2rem; top: 50%; left: 25%; animation-delay: 2s; }
+
+@keyframes breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.04); } }
+@keyframes floatOrganic { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(10deg); } }
+
+.sintomas-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap: 12px; }
+.sint-btn {
+  background: white; border: 1.5px solid rgba(0,0,0,0.06); border-radius: var(--r-md); padding: 1.25rem 1rem;
+  cursor: pointer; text-align: left; transition: all .2s;
+}
+.sint-btn:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(239, 117, 34, 0.1); }
+.sint-btn.sel { background: var(--orange-pale); border-color: var(--orange); }
+.sint-name { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-top: 8px; display: block; }
+.sint-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 2rem; justify-content: flex-start; }
 
 /* SECTIONS GERAIS */
 section { padding: clamp(3.5rem,6vw,6rem) clamp(2rem,6vw,3rem); }
@@ -195,42 +216,6 @@ h2.sec-title {
 }
 .sec-desc { font-size: 1rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; max-width: 550px; }
 
-
-/* SEÇÃO SINTOMAS (COM ANIMAÇÃO DE PETS À ESQUERDA) */
-.sintomas-sec { background: var(--sand); overflow: hidden; }
-
-/* Shift para a direita usando Grid e Margem interna */
-.sintomas-layout { 
-  display: grid; 
-  grid-template-columns: 0.85fr 1.15fr; 
-  gap: 4rem; 
-  align-items: center; 
-  padding-left: clamp(1rem, 6vw, 5rem); /* Empurra os blocos mais para a direita */
-}
-
-/* Animação de Pets Sólidos */
-.sint-anim-container { position: relative; width: 100%; aspect-ratio: 1/1; display: flex; align-items: flex-end; justify-content: center; }
-.pet-group { position: relative; display: flex; align-items: flex-end; width: 100%; }
-.solid-dog { font-size: 16rem; color: var(--green-mid); z-index: 1; transform-origin: bottom center; animation: breathe 4s ease-in-out infinite; }
-.solid-cat { font-size: 9rem; color: var(--orange); z-index: 2; margin-left: -3rem; animation: breathe 4s ease-in-out infinite 1s; }
-.floating-element { position: absolute; z-index: 3; animation: floatOrganic 5s ease-in-out infinite; }
-
-/* Elementos ajustados (mais baixos e perto dos pets) */
-.leaf-cannabis { color: var(--green-light); font-size: 4rem; top: 40%; right: 15%; }
-.heart-health { color: var(--orange); font-size: 2.5rem; top: 55%; left: 20%; animation-delay: 2s; }
-
-@keyframes breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.04); } }
-@keyframes floatOrganic { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(10deg); } }
-
-.sintomas-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap: 12px; margin-top: 2rem; }
-.sint-btn {
-  background: white; border: 1.5px solid rgba(0,0,0,0.06); border-radius: var(--r-md); padding: 1.25rem 1rem;
-  cursor: pointer; text-align: left; transition: all .2s;
-}
-.sint-btn:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(239, 117, 34, 0.1); }
-.sint-btn.sel { background: var(--orange-pale); border-color: var(--orange); }
-.sint-name { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-top: 8px; display: block; }
-.sint-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 3rem; }
 
 /* PROCESSO (ETAPAS) */
 .processo-sec { background: var(--cream); }
@@ -276,7 +261,6 @@ footer {
   background: #07120a; color: rgba(255,255,255,0.4); padding: 4rem 2rem; text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
 }
-/* Força a logo original a ficar Branca usando Invert */
 .footer-logo { max-width: 180px; filter: brightness(0) invert(1); }
 .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
 .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500; }
@@ -308,7 +292,7 @@ footer {
 .chk-opt.sel { border-color: var(--orange); background: var(--orange-pale); color: var(--orange-dark); font-weight: 600; }
 .chkbox { width: 20px; height: 20px; border: 2px solid #A1B2A6; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: transparent; background: white; }
 .chk-opt.sel .chkbox { background: var(--orange); border-color: var(--orange); color: white; }
-.chk-opt.sel .chkbox::after { content: '✓'; }
+.chk-opt.sel .chkbox::after { content: '✓'; font-weight: bold; }
 .mform-step { display: none; }
 .mform-step.active { display: block; }
 .mbtn-row { display: flex; gap: 10px; margin-top: 2rem; }
@@ -325,11 +309,13 @@ footer {
   .social-badge { display: none; }
   .carousel-arrow { width: 36px; height: 44px; }
   
-  .sintomas-layout { grid-template-columns: 1fr; gap: 2rem; padding-left: clamp(1rem, 6vw, 2rem); }
-  .sint-anim-container { max-width: 250px; margin: 0 auto; }
+  .sintomas-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .sint-anim-container { max-width: 250px; margin: 0 auto; aspect-ratio: auto; padding-bottom: 20px;}
   .solid-dog { font-size: 10rem; }
-  .solid-cat { font-size: 6rem; }
+  .solid-cat { font-size: 6rem; margin-left: -1rem;}
   
+  .sint-cta { justify-content: center; }
+
   .steps-grid, .qs-body { grid-template-columns: 1fr; }
   .btn-orange, .btn-outline-white, .btn-outline { width: 100%; justify-content: center; }
 }
@@ -345,8 +331,6 @@ footer {
 </nav>
 
 <section class="hero" style="padding:0;">
-  <div class="hero-bg-pattern"></div>
-  
   <div class="hero-left">
     <div class="hero-pill-badge"><span class="dot"></span> Tratamentos naturais com cannabis medicinal</div>
     <h1>Seu pet pode voltar a ter <span class="highlight">conforto e qualidade</span> de vida.</h1>
@@ -386,44 +370,49 @@ footer {
 </section>
 
 <section class="sintomas-sec">
-  <div class="inner sintomas-layout">
+  <div class="inner">
     
-    <div class="sint-anim-container">
-      <i class="fas fa-cannabis floating-element leaf-cannabis"></i>
-      <i class="fas fa-heart floating-element heart-health"></i>
-      <div class="pet-group">
-        <i class="fas fa-dog solid-dog"></i>
-        <i class="fas fa-cat solid-cat"></i>
-      </div>
-    </div>
-
-    <div>
+    <div class="sintomas-header">
       <div class="sec-label-pill">Condições atendidas</div>
       <h2 class="sec-title">Quais sintomas ou condições seu pet está enfrentando?</h2>
       <p class="sec-desc">Selecione abaixo as opções mais próximas do quadro atual e fale com nossa equipe.</p>
-      
-      <div class="sintomas-grid">
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">🦴 <span class="sint-name">Dores persistentes</span></button>
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">😰 <span class="sint-name">Ansiedade e agitação</span></button>
-        
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">⚡ <span class="sint-name">Crises convulsivas</span></button>
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">🐾 <span class="sint-name">Dif. de locomoção</span></button>
+    </div>
 
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">🧠 <span class="sint-name">Epilepsia</span></button>
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">😣 <span class="sint-name">Desconforto frequente</span></button>
-        
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">🍽️ <span class="sint-name">Falta de apetite</span></button>
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">😨 <span class="sint-name">Medo excessivo e fobias</span></button>
-        
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">❤️ <span class="sint-name">Cuidados paliativos</span></button>
-        <button class="sint-btn" onclick="this.classList.toggle('sel')">🔬 <span class="sint-name">Câncer</span></button>
+    <div class="sintomas-layout">
+      <div class="sint-anim-container">
+        <i class="fas fa-cannabis floating-element leaf-cannabis"></i>
+        <i class="fas fa-heart floating-element heart-health"></i>
+        <div class="pet-group">
+          <i class="fas fa-dog solid-dog"></i>
+          <i class="fas fa-cat solid-cat"></i>
+        </div>
       </div>
 
-      <div class="sint-cta">
-        <button class="btn-orange" onclick="openModal()"><i class="fas fa-paw"></i> Iniciar tratamento →</button>
-        <button class="btn-outline" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver como funciona</button>
+      <div>
+        <div class="sintomas-grid">
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">🦴 <span class="sint-name">Dores persistentes</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">😰 <span class="sint-name">Ansiedade e agitação</span></button>
+          
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">⚡ <span class="sint-name">Crises convulsivas</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">🧠 <span class="sint-name">Epilepsia</span></button>
+
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">🐾 <span class="sint-name">Dif. de locomoção</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">😣 <span class="sint-name">Desconforto frequente</span></button>
+          
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">🍽️ <span class="sint-name">Falta de apetite</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">😨 <span class="sint-name">Medo excessivo e fobias</span></button>
+          
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">❤️ <span class="sint-name">Cuidados paliativos</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel')">🔬 <span class="sint-name">Câncer</span></button>
+        </div>
+
+        <div class="sint-cta">
+          <button class="btn-orange" onclick="openModal()"><i class="fas fa-paw"></i> Iniciar tratamento →</button>
+          <button class="btn-outline" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver como funciona</button>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -434,7 +423,7 @@ footer {
         <h2 class="sec-title">Passo a passo até <br>a solução</h2>
       </div>
       <div class="processo-header-right">
-        <span class="badge">PROCESSO</span>
+        <span class="badge" style="display:inline-block; background:var(--green-pale); color:var(--green-mid); font-size:0.75rem; font-weight:700; padding:6px 16px; border-radius:100px; margin-bottom:10px;">PROCESSO</span>
         <p>Entenda o caminho completo, do primeiro contato ao acompanhamento do tratamento.</p>
       </div>
     </div>
@@ -525,13 +514,13 @@ footer {
 </section>
 
 <footer>
-  <img src="https://associacaoalternativa.com.br/wp-content/uploads/2025/05/logo-associacao-alternativa.svg" alt="Associação Alternativa" class="footer-logo">
+  <img src="https://i.postimg.cc/28951dHZ/ASSO-2.png" alt="Associação Alternativa" class="footer-logo">
   <div class="footer-links">
     <a href="#">Política de Privacidade</a>
     <a href="#">Termos de Uso</a>
     <a href="#">LGPD</a>
   </div>
-  <p>© 2026 Associação Alternativa. Todos os direitos reservados.</p>
+  <p style="margin-top: 1rem;">© 2026 Associação Alternativa. Todos os direitos reservados.</p>
 </footer>
 
 <div class="modal-overlay" id="modal-overlay" onclick="if(event.target==this)closeModal()">
