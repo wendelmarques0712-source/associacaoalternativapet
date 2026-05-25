@@ -139,7 +139,7 @@ nav {
 }
 .hero-media {
   grid-column: 2; grid-row: 1 / span 2;
-  position: relative; overflow: hidden;
+  position: relative; overflow: visible; /* Alterado p/ animações saírem do box */
   display: flex; align-items: center; justify-content: center;
   padding: 2rem clamp(2rem,6vw,3rem) 2rem 2rem; z-index: 3;
 }
@@ -186,54 +186,69 @@ nav {
 .stat-num { font-size: 1.5rem; font-weight: 800; color: white; line-height: 1; }
 .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 4px; line-height: 1.3;}
 
-/* Carrossel Hero */
-.hero-carousel-container { position: relative; width: 100%; max-width: 460px; }
-.hero-carousel {
-  position: relative; width: 100%; aspect-ratio: 4 / 5; 
-  border-radius: var(--r-xl); overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  animation: fadeUp .6s .4s ease both;
-}
-.hero-carousel img {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
-}
-.hero-carousel img.active { opacity: 1; }
-
-/* Setas e Dots Premium */
-.carousel-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(255,255,255,0.25); border: none; color: white;
-  width: 40px; height: 40px; border-radius: 50%;
+/* === NOVA ANIMAÇÃO VETORIAL (Substitui o Carrossel) === */
+.hero-anim-container {
+  position: relative;
+  width: 100%; max-width: 500px;
+  aspect-ratio: 1 / 1;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; cursor: pointer; transition: all .2s; z-index: 5;
-  backdrop-filter: blur(8px);
+  margin: 0 auto;
 }
-.carousel-arrow:hover { background: rgba(255,255,255,0.4); }
-.carousel-arrow.prev { left: 15px; }
-.carousel-arrow.next { right: 15px; }
-.carousel-dots {
-  position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 8px; z-index: 5;
+/* Blob Orgânico de Fundo */
+.hero-blob {
+  position: absolute;
+  width: 75%; height: 75%;
+  background: linear-gradient(135deg, var(--green-light), var(--green-mid));
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: morphBlob 8s ease-in-out infinite;
+  z-index: 1;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
-.dot { width: 8px; height: 8px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: all .2s; }
-.dot.active { background: white; transform: scale(1.3); width: 16px; border-radius: 10px; }
+@keyframes morphBlob {
+  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+  67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+}
 
-/* Badges Sociais (Apenas Desktop) */
-.social-badge {
-  position: absolute; 
-  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(10px); color: white;
-  padding: 10px 18px; border-radius: 100px;
-  display: flex; align-items: center; gap: 10px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15); z-index: 5;
-  animation: fadeUp 0.8s 0.6s ease both;
+/* Pets Animados em Estilo de Traços (Outline) */
+.anim-pet {
+  position: absolute;
+  color: transparent; /* Miolo transparente para dar efeito de traço puro */
+  z-index: 3;
+  animation: floatPet 6s ease-in-out infinite;
 }
-.social-badge i { font-size: 1.6rem; }
-.social-badge .text { font-size: 0.8rem; line-height: 1.3; }
-.social-badge .text strong { display: block; font-size: 1rem; font-weight: 700; color: var(--orange); }
-.badge-insta { top: 10%; right: -60px; }
-.badge-patients { bottom: 15%; left: -60px; }
+.pet-dog-outline {
+  font-size: clamp(8rem, 15vw, 13rem);
+  -webkit-text-stroke: 4px var(--orange);
+  bottom: 15%; left: 10%;
+}
+.pet-cat-outline {
+  font-size: clamp(6rem, 12vw, 10rem);
+  -webkit-text-stroke: 4px var(--white);
+  bottom: 25%; right: 10%;
+  animation-delay: 1.5s;
+  z-index: 2;
+}
+
+/* Elementos de Saúde Flutuantes */
+.anim-floating {
+  position: absolute;
+  z-index: 4;
+  animation: spinFloat 10s linear infinite;
+}
+.anim-leaf { color: var(--green-pale); font-size: clamp(2rem, 4vw, 3rem); top: 15%; left: 15%; }
+.anim-cross { color: var(--orange-pale); font-size: clamp(1.5rem, 3vw, 2.5rem); top: 20%; right: 10%; animation-duration: 8s; animation-direction: reverse; }
+.anim-bone { color: var(--sand); font-size: clamp(1.5rem, 3vw, 2rem); bottom: 5%; right: 30%; animation-duration: 12s; }
+
+@keyframes floatPet {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes spinFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
 
 
 /* SECTIONS (Margens Ampliadas Globalmente) */
@@ -365,7 +380,7 @@ footer {
 }
 .modal-overlay.open { display: flex; }
 .modal {
-  background: var(--white); /* MODIFICADO: Fundo branco */
+  background: var(--white);
   border-radius: var(--r-xl);
   width: 100%; max-width: 540px; max-height: 90svh;
   overflow-y: auto; position: relative;
@@ -377,16 +392,16 @@ footer {
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 .modal-head {
-  background: var(--white); /* MODIFICADO: Fundo branco */
+  background: var(--white); 
   padding: 2.5rem 2.5rem 1.5rem;
   text-align: center; position: sticky; top: 0; z-index: 2;
   border-radius: var(--r-xl) var(--r-xl) 0 0; 
-  border-bottom: 1px solid var(--border-light); /* Borda sutil de separação */
+  border-bottom: 1px solid var(--border-light); 
 }
 .modal-icons { display: flex; justify-content: center; gap: -8px; margin-bottom: 1.25rem; }
 .modal-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--white); }
-.modal-icon:first-child { background: var(--green-pale); margin-right: -12px; z-index: 2; }
-.modal-icon:last-child { background: var(--orange-pale); }
+.modal-icon:first-child { background: var(--green-pale); margin-right: -12px; z-index: 2; color: var(--green-dark);}
+.modal-icon:last-child { background: var(--orange-pale); color: var(--orange);}
 .modal-head h3 { font-size: 1.25rem; font-weight: 800; color: var(--green-dark); line-height: 1.35; margin-bottom: 8px; }
 .modal-head h3 span { color: var(--orange); }
 .modal-head p { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
@@ -469,7 +484,6 @@ footer {
   .nav-logo img { max-height: 28px; }
   .nav-btn { font-size: 0.75rem; padding: 10px 18px; }
   
-  /* Hero Reposicionada: Texto -> Media -> Stats */
   .hero {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
@@ -491,14 +505,7 @@ footer {
   }
 
   .hero h1 { font-size: 2.2rem; }
-  .hero-carousel-container { max-width: 100%; margin: 0 auto;}
-  .hero-carousel { aspect-ratio: 4/3; }
   
-  .social-badge { display: none; } /* Oculta badges suspensos no mobile para visual limpo */
-  .carousel-arrow { width: 34px; height: 34px; font-size: 1rem; }
-  .carousel-arrow.prev { left: 12px; }
-  .carousel-arrow.next { right: 12px; }
-
   .steps-grid { grid-template-columns: 1fr; }
   .processo-header { flex-direction: column; align-items: flex-start; }
   .processo-header-right { text-align: left; }
@@ -516,10 +523,6 @@ footer {
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-@keyframes floatPaw {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.15; }
-  50% { transform: translateY(-30px) scale(1.05); opacity: 0.2; }
 }
 </style>
 </head>
@@ -546,30 +549,15 @@ footer {
   </div>
 
   <div class="hero-media">
-    <div class="hero-carousel-container">
+    <div class="hero-anim-container">
+      <div class="hero-blob"></div>
       
-      <div class="social-badge badge-insta">
-        <i class="fab fa-instagram"></i>
-        <div class="text">Mais de <strong>20 mil</strong>seguidores</div>
-      </div>
-      <div class="social-badge badge-patients">
-        <i class="fas fa-user-check"></i>
-        <div class="text">Mais de <strong>20 mil</strong>pacientes</div>
-      </div>
-      
-      <div class="hero-carousel" id="heroCarousel">
-        <img src="https://i.postimg.cc/Fs4Cb9cj/canabidiol-para-caes-cachorro-adulto.jpg" alt="Pet adulto" class="active">
-        <img src="https://i.postimg.cc/FFgV40kt/27736.jpg" alt="Pet em tratamento">
-        
-        <div class="carousel-dots">
-          <div class="dot active"></div>
-          <div class="dot"></div>
-        </div>
-      </div>
-      
-      <button class="carousel-arrow prev"><i class="fas fa-chevron-left"></i></button>
-      <button class="carousel-arrow next"><i class="fas fa-chevron-right"></i></button>
-      
+      <i class="fas fa-dog anim-pet pet-dog-outline"></i>
+      <i class="fas fa-cat anim-pet pet-cat-outline"></i>
+
+      <i class="fas fa-leaf anim-floating anim-leaf"></i>
+      <i class="fas fa-plus anim-floating anim-cross"></i>
+      <i class="fas fa-bone anim-floating anim-bone"></i>
     </div>
   </div>
 
@@ -875,40 +863,7 @@ function initPawTrail() {
   });
 }
 
-// LÓGICA DO CARROSSEL HERO
-function initHeroCarousel() {
-  const slides = document.querySelectorAll('#heroCarousel img');
-  const dots = document.querySelectorAll('#heroCarousel .dot');
-  const prevBtn = document.querySelector('.carousel-arrow.prev');
-  const nextBtn = document.querySelector('.carousel-arrow.next');
-  let currentSlide = 0;
-  let carouselInterval;
-
-  function goToSlide(n) {
-    slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
-  }
-
-  function nextSlide() { goToSlide(currentSlide + 1); }
-  function prevSlide() { goToSlide(currentSlide - 1); }
-
-  function startAutoSlide() { carouselInterval = setInterval(nextSlide, 5000); }
-  function stopAutoSlide() { clearInterval(carouselInterval); }
-
-  nextBtn.addEventListener('click', () => { nextSlide(); stopAutoSlide(); startAutoSlide(); });
-  prevBtn.addEventListener('click', () => { prevSlide(); stopAutoSlide(); startAutoSlide(); });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => { goToSlide(index); stopAutoSlide(); startAutoSlide(); });
-  });
-
-  startAutoSlide();
-}
-
-// LÓGICA DO CARROSSEL SECUNDÁRIO
+// LÓGICA DO CARROSSEL SECUNDÁRIO (QUEM SOMOS)
 function initAboutCarousel() {
   const slides = document.querySelectorAll('#aboutCarousel img');
   if (slides.length > 1) {
@@ -922,9 +877,8 @@ function initAboutCarousel() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initHeroCarousel();
   initAboutCarousel();
-  initPawTrail(); // Inicializa as patinhas com o mouse
+  initPawTrail(); // Inicializa as patinhas com o mouse na Hero
 });
 
 function maskPhone(input) {
