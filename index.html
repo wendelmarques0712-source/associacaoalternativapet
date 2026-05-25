@@ -96,31 +96,11 @@ nav {
   min-height: calc(100svh - 75px);
   overflow: hidden; position: relative;
 }
-/* Efeito de Gradiente de Fundo Base */
+/* Efeito de Gradiente Suave (Sem formas extras, visual limpo) */
 .hero::before {
   content: ''; position: absolute; inset: 0;
   background: radial-gradient(ellipse 60% 80% at 30% 50%, rgba(44,133,76,0.3) 0%, transparent 70%);
   pointer-events: none; z-index: 1;
-}
-/* TEXTURA DE PATINHAS (Leve, via SVG Base64) - Ótimo para Mobile e Fundo */
-.hero-bg-pattern {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.05;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23ffffff"><path d="M226.5 92.9c14.3 7.3 22.8 23 21 39.2-2.3 21-18.7 39.3-39.7 42.7-22.5 3.7-43.2-12-46.7-34.5-2.6-16.5 4.3-32.9 17.5-41.9 13.9-9.5 33.1-12.8 47.9-5.5zM388 135c-21.2-3.1-40.8 12.3-43 33.5-1.9 17.6 7 34.6 22.3 42.4 14.6 7.4 33.5 6 46.5-3.8 15.6-11.7 21.6-32.3 14.3-50.5-5.9-14.7-20.2-24.3-40.1-21.6zM286.4 186.2c-23-2.1-43.6 12.5-47.5 35.1-3 17.3 3.6 34.9 16.8 44.8 13.9 10.4 33.7 12 48.6 3.9 16.4-9 24.3-29.2 18.2-46.6-5.2-14.5-19.1-24.4-36.1-37.2zM216.5 258.4c-22.3-3-42.6 11-47.2 33.2-3.5 17.1 2.3 34.9 15 45.4 13.3 11 33.5 13.5 48.6 5.8 16.7-8.5 25.4-28.4 20-46-5-14.4-18.5-24.7-36.4-38.4zM321.7 289c-20.5-4-39.9 9.8-45.1 30.2-4.1 16.3.7 34.1 12.4 45.4 12.1 11.7 31.8 15.2 46.9 8.2 16.9-7.8 26.6-27.1 22.3-45-4.4-14.5-17.1-25.5-36.5-38.8z"/></svg>');
-  background-size: 100px;
-  background-repeat: repeat;
-  animation: bgMove 40s linear infinite;
-}
-@keyframes bgMove { from { background-position: 0 0; } to { background-position: -200px 200px; } }
-
-/* PATINHAS INTERATIVAS (Desktop via JS) */
-.trail-paw {
-  position: absolute; font-size: 1.5rem; color: rgba(255, 255, 255, 0.15);
-  pointer-events: none; transform: translate(-50%, -50%);
-  animation: fadePaw 1.5s ease-out forwards; z-index: 2;
-}
-@keyframes fadePaw {
-  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.3) rotate(0deg); }
-  100% { opacity: 0; transform: translate(-50%, -100px) scale(1.2) rotate(20deg); }
 }
 
 /* Áreas da Hero */
@@ -139,7 +119,7 @@ nav {
 }
 .hero-media {
   grid-column: 2; grid-row: 1 / span 2;
-  position: relative; overflow: visible; /* Alterado p/ animações saírem do box */
+  position: relative; overflow: visible; 
   display: flex; align-items: center; justify-content: center;
   padding: 2rem clamp(2rem,6vw,3rem) 2rem 2rem; z-index: 3;
 }
@@ -186,70 +166,74 @@ nav {
 .stat-num { font-size: 1.5rem; font-weight: 800; color: white; line-height: 1; }
 .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 4px; line-height: 1.3;}
 
-/* === NOVA ANIMAÇÃO VETORIAL (Substitui o Carrossel) === */
+/* === NOVA ANIMAÇÃO VETORIAL SÓLIDA (Flat Design) === */
 .hero-anim-container {
   position: relative;
   width: 100%; max-width: 500px;
   aspect-ratio: 1 / 1;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: flex-end; justify-content: center;
   margin: 0 auto;
 }
-/* Blob Orgânico de Fundo */
-.hero-blob {
-  position: absolute;
-  width: 75%; height: 75%;
-  background: linear-gradient(135deg, var(--green-light), var(--green-mid));
-  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-  animation: morphBlob 8s ease-in-out infinite;
+
+.pet-group {
+  position: relative;
+  display: flex; align-items: flex-end; justify-content: center;
+  width: 100%; height: 80%;
+}
+
+/* Cachorro sólido (Cor areia/creme para contrastar no verde) */
+.solid-dog {
+  font-size: clamp(12rem, 24vw, 20rem);
+  color: var(--sand);
   z-index: 1;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-}
-@keyframes morphBlob {
-  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-  34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-  67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+  transform-origin: bottom center;
+  animation: breatheDog 4s ease-in-out infinite;
 }
 
-/* Pets Animados em Estilo de Traços (Outline) */
-.anim-pet {
-  position: absolute;
-  color: transparent; /* Miolo transparente para dar efeito de traço puro */
-  z-index: 3;
-  animation: floatPet 6s ease-in-out infinite;
-}
-.pet-dog-outline {
-  font-size: clamp(8rem, 15vw, 13rem);
-  -webkit-text-stroke: 4px var(--orange);
-  bottom: 15%; left: 10%;
-}
-.pet-cat-outline {
-  font-size: clamp(6rem, 12vw, 10rem);
-  -webkit-text-stroke: 4px var(--white);
-  bottom: 25%; right: 10%;
-  animation-delay: 1.5s;
+/* Gato sólido (Cor Laranja) - Sobreposto ao cachorro */
+.solid-cat {
+  font-size: clamp(7rem, 14vw, 11rem);
+  color: var(--orange);
   z-index: 2;
+  margin-left: -4rem; /* Sobreposição */
+  transform-origin: bottom center;
+  animation: breatheCat 4s ease-in-out infinite 1s; /* Delay para dessincronizar respiração */
 }
 
-/* Elementos de Saúde Flutuantes */
-.anim-floating {
+/* Animações de respiração suave (Apenas escala no eixo Y) */
+@keyframes breatheDog {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.03); }
+}
+@keyframes breatheCat {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.05); }
+}
+
+/* Folha de Cannabis e Coração flutuantes */
+.floating-element {
   position: absolute;
-  z-index: 4;
-  animation: spinFloat 10s linear infinite;
+  z-index: 3;
+  animation: floatOrganic 6s ease-in-out infinite;
 }
-.anim-leaf { color: var(--green-pale); font-size: clamp(2rem, 4vw, 3rem); top: 15%; left: 15%; }
-.anim-cross { color: var(--orange-pale); font-size: clamp(1.5rem, 3vw, 2.5rem); top: 20%; right: 10%; animation-duration: 8s; animation-direction: reverse; }
-.anim-bone { color: var(--sand); font-size: clamp(1.5rem, 3vw, 2rem); bottom: 5%; right: 30%; animation-duration: 12s; }
+.leaf-cannabis {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  top: 10%; right: 15%;
+  transform: rotate(15deg);
+}
+.heart-health {
+  color: var(--orange);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  top: 30%; left: 15%;
+  animation-delay: 1.5s;
+  animation-duration: 5s;
+}
 
-@keyframes floatPet {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+@keyframes floatOrganic {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(10deg); }
 }
-@keyframes spinFloat {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(180deg); }
-  100% { transform: translateY(0) rotate(360deg); }
-}
-
 
 /* SECTIONS (Margens Ampliadas Globalmente) */
 section { padding: clamp(3.5rem,6vw,6rem) clamp(2rem,6vw,3rem); }
@@ -364,8 +348,7 @@ footer {
 .footer-logo {
   max-width: 180px; height: auto;
   display: block; margin: 0 auto;
-  /* Garante renderização da logo em BRANCO */
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1); /* Renderiza em Branco */
 }
 .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.5rem; }
 .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; font-weight: 500; }
@@ -420,7 +403,6 @@ footer {
 .mstep-dot.active { background: var(--orange); }
 .mstep-dot.done { background: var(--green-light); }
 
-/* Form elements - ALTO CONTRASTE */
 .fg { margin-bottom: 1.25rem; position: relative;}
 .flabel { display: block; font-size: 0.85rem; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
 .finput { 
@@ -479,33 +461,21 @@ footer {
 .msuccess h3 { font-size: 1.5rem; font-weight: 800; color: var(--green-dark); margin-bottom: 0.75rem; }
 .msuccess p { font-size: 1rem; font-weight: 400; color: var(--text-body); line-height: 1.6;}
 
-/* RESPONSIVO MOBILE - Otimizado e Organizado */
+/* RESPONSIVO MOBILE */
 @media (max-width: 950px) {
   .nav-logo img { max-height: 28px; }
   .nav-btn { font-size: 0.75rem; padding: 10px 18px; }
   
-  .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    min-height: auto;
-  }
-  .hero-text { 
-    grid-column: 1; grid-row: 1; 
-    padding: 3rem clamp(2rem,6vw,3rem) 1.5rem clamp(2rem,6vw,3rem); 
-    text-align: left; 
-  }
-  .hero-media { 
-    grid-column: 1; grid-row: 2; 
-    padding: 1rem clamp(2rem,6vw,3rem); 
-  }
-  .hero-stats { 
-    grid-column: 1; grid-row: 3; 
-    padding: 1rem clamp(2rem,6vw,3rem) 4rem clamp(2rem,6vw,3rem);
-    flex-wrap: wrap; gap: 1rem;
-  }
+  .hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto; min-height: auto; }
+  .hero-text { grid-column: 1; grid-row: 1; padding: 3rem clamp(2rem,6vw,3rem) 1.5rem clamp(2rem,6vw,3rem); text-align: left; }
+  .hero-media { grid-column: 1; grid-row: 2; padding: 1rem clamp(2rem,6vw,3rem); }
+  .hero-stats { grid-column: 1; grid-row: 3; padding: 1rem clamp(2rem,6vw,3rem) 4rem clamp(2rem,6vw,3rem); flex-wrap: wrap; gap: 1rem; }
 
   .hero h1 { font-size: 2.2rem; }
   
+  /* Ajuste das formas vetoriais no Mobile */
+  .hero-anim-container { max-width: 100%; aspect-ratio: 16/9; }
+
   .steps-grid { grid-template-columns: 1fr; }
   .processo-header { flex-direction: column; align-items: flex-start; }
   .processo-header-right { text-align: left; }
@@ -536,8 +506,8 @@ footer {
 </nav>
 
 <section class="hero" style="padding:0;">
-  
-  <div class="hero-bg-pattern"></div> <div class="hero-text">
+
+  <div class="hero-text">
     <div class="hero-pill-badge"><span class="dot"></span> Tratamentos naturais com cannabis medicinal</div>
     <h1>Seu pet pode voltar a ter <span class="highlight">conforto e qualidade</span> de vida.</h1>
     <p class="hero-sub">A Associação Alternativa oferece orientação especializada em cada etapa do tratamento, com acompanhamento profissional e produtos de qualidade — 100% online.</p>
@@ -550,14 +520,15 @@ footer {
 
   <div class="hero-media">
     <div class="hero-anim-container">
-      <div class="hero-blob"></div>
       
-      <i class="fas fa-dog anim-pet pet-dog-outline"></i>
-      <i class="fas fa-cat anim-pet pet-cat-outline"></i>
+      <i class="fas fa-cannabis floating-element leaf-cannabis"></i>
+      <i class="fas fa-heart floating-element heart-health"></i>
 
-      <i class="fas fa-leaf anim-floating anim-leaf"></i>
-      <i class="fas fa-plus anim-floating anim-cross"></i>
-      <i class="fas fa-bone anim-floating anim-bone"></i>
+      <div class="pet-group">
+        <i class="fas fa-dog solid-dog"></i>
+        <i class="fas fa-cat solid-cat"></i>
+      </div>
+
     </div>
   </div>
 
@@ -831,38 +802,6 @@ footer {
 </div>
 
 <script>
-// LÓGICA DAS PATINHAS INTERATIVAS (DESKTOP)
-function initPawTrail() {
-  const hero = document.querySelector('.hero');
-  if(!hero) return;
-
-  let lastTime = 0;
-  hero.addEventListener('mousemove', (e) => {
-    // Só cria no desktop e previne excesso de elementos (throttle)
-    if(window.innerWidth < 950) return;
-    const now = Date.now();
-    if (now - lastTime < 60) return; 
-    lastTime = now;
-
-    const paw = document.createElement('i');
-    paw.className = 'fas fa-paw trail-paw';
-
-    const rect = hero.getBoundingClientRect();
-    paw.style.left = `${e.clientX - rect.left}px`;
-    paw.style.top = `${e.clientY - rect.top}px`;
-
-    // Rotação levemente aleatória
-    const rot = Math.random() * 40 - 20; 
-    paw.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
-
-    hero.appendChild(paw);
-
-    setTimeout(() => {
-      if (paw.parentNode) paw.parentNode.removeChild(paw);
-    }, 1500);
-  });
-}
-
 // LÓGICA DO CARROSSEL SECUNDÁRIO (QUEM SOMOS)
 function initAboutCarousel() {
   const slides = document.querySelectorAll('#aboutCarousel img');
@@ -878,7 +817,6 @@ function initAboutCarousel() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initAboutCarousel();
-  initPawTrail(); // Inicializa as patinhas com o mouse na Hero
 });
 
 function maskPhone(input) {
