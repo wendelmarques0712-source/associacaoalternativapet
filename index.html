@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 :root {
-  /* Cores baseadas na identidade da Associação Alternativa */
   --green-dark: #113620;
   --green-mid: #1d5632;
   --green-light: #2c854c;
@@ -48,7 +47,6 @@ nav {
 }
 .nav-logo { display: flex; align-items: center; text-decoration: none; }
 .nav-logo img { max-height: 38px; width: auto; display: block; }
-
 .nav-btn {
   background: var(--orange); color: white;
   font-family: var(--font); font-weight: 700; font-size: 0.85rem;
@@ -66,17 +64,7 @@ nav {
   transition: all .3s ease; text-decoration: none; white-space: nowrap;
   box-shadow: 0 6px 16px rgba(239, 117, 34, 0.25);
 }
-.btn-orange i { font-size: 1.1rem; } 
 .btn-orange:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(239, 117, 34, 0.35); }
-
-.btn-outline {
-  background: transparent; color: var(--green-dark);
-  font-family: var(--font); font-weight: 500; font-size: 0.95rem;
-  padding: 14px 30px; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px;
-  cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
-  transition: all .3s ease; text-decoration: none;
-}
-.btn-outline:hover { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.25); transform: translateY(-2px); }
 
 .btn-outline-white {
   background: transparent; color: white;
@@ -87,412 +75,166 @@ nav {
 }
 .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
 
-/* HERO */
+/* HERO (VOLTANDO COM CARROSSEL E BADGES) */
 .hero {
   background: var(--green-mid);
-  display: grid; 
-  grid-template-columns: 1.15fr 0.85fr;
-  grid-template-rows: auto auto;
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
   min-height: calc(100svh - 75px);
   overflow: hidden; position: relative;
 }
-/* Efeito de Gradiente Suave (Sem formas extras, visual limpo) */
 .hero::before {
   content: ''; position: absolute; inset: 0;
   background: radial-gradient(ellipse 60% 80% at 30% 50%, rgba(44,133,76,0.3) 0%, transparent 70%);
   pointer-events: none; z-index: 1;
 }
-
-/* Áreas da Hero */
-.hero-text {
-  grid-column: 1; grid-row: 1;
+.hero-left {
   display: flex; flex-direction: column; justify-content: center;
-  padding: clamp(3rem,6vw,5rem) 0 clamp(1rem,3vw,2rem) clamp(2rem,6vw,4.5rem);
-  position: relative; z-index: 3;
+  padding: clamp(3rem,6vw,5rem) 0 clamp(3rem,6vw,5rem) clamp(2rem,6vw,4.5rem);
+  position: relative; z-index: 2;
 }
-.hero-stats {
-  grid-column: 1; grid-row: 2;
-  display: flex; gap: 1.5rem;
-  padding: 0 0 clamp(3rem,6vw,5rem) clamp(2rem,6vw,4.5rem);
-  position: relative; z-index: 3;
-  align-items: flex-start;
-}
-.hero-media {
-  grid-column: 2; grid-row: 1 / span 2;
-  position: relative; overflow: visible; 
-  display: flex; align-items: center; justify-content: center;
-  padding: 2rem clamp(2rem,6vw,3rem) 2rem 2rem; z-index: 3;
-}
-
-/* Tipografia Hero */
 .hero-pill-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
   color: white; font-size: 0.65rem; font-weight: 700;
   letter-spacing: 0.05em; text-transform: uppercase;
   padding: 6px 16px; border-radius: 100px; width: fit-content; margin-bottom: 1.5rem;
-  backdrop-filter: blur(4px);
 }
 .hero-pill-badge .dot { width: 6px; height: 6px; background: white; border-radius: 50%; }
 
 .hero h1 {
   font-size: clamp(2rem,4vw,3.4rem); font-weight: 800;
-  color: white; line-height: 1.12; letter-spacing: -0.025em;
-  margin-bottom: 1.25rem; animation: fadeUp .5s ease both;
+  color: white; line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 1.25rem;
 }
-.hero h1 .highlight { color: var(--orange); font-weight: 800; } 
+.hero h1 .highlight { color: var(--orange); }
 .hero-sub {
-  font-size: clamp(0.95rem,1.3vw,1.05rem); font-weight: 300;
-  color: rgba(255,255,255,0.85); max-width: 500px; line-height: 1.7;
-  margin-bottom: 2rem; animation: fadeUp .5s .1s ease both;
-}
-.hero-btns {
-  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-  animation: fadeUp .5s .3s ease both;
+  font-size: clamp(0.95rem,1.3vw,1.1rem); font-weight: 300;
+  color: rgba(255,255,255,0.85); max-width: 500px; line-height: 1.7; margin-bottom: 2rem;
 }
 
-/* Stats em formato de caixas modernas */
-.stat-box {
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 14px;
-  padding: 1.25rem 1rem;
-  display: flex; flex-direction: column;
-  flex: 1; min-width: 140px;
-  border: 1px solid rgba(255,255,255,0.05);
-  animation: fadeUp .5s .4s ease both;
-  backdrop-filter: blur(5px);
+.hero-right {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  padding: 2rem clamp(2rem,6vw,3rem) 2rem 2rem; z-index: 2;
 }
-.stat-box i { font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 8px; }
-.stat-num { font-size: 1.5rem; font-weight: 800; color: white; line-height: 1; }
-.stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 4px; line-height: 1.3;}
+.hero-carousel-container { position: relative; width: 100%; max-width: 440px; }
+.hero-carousel {
+  position: relative; width: 100%; aspect-ratio: 4 / 5; 
+  border-radius: var(--r-xl); overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.hero-carousel img {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
+}
+.hero-carousel img.active { opacity: 1; }
 
-/* === NOVA ANIMAÇÃO VETORIAL SÓLIDA (Flat Design) === */
-.hero-anim-container {
-  position: relative;
-  width: 100%; max-width: 500px;
-  aspect-ratio: 1 / 1;
-  display: flex; align-items: flex-end; justify-content: center;
-  margin: 0 auto;
+/* Setas e Badges */
+.carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.2); border: none; color: white;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer; z-index: 5; backdrop-filter: blur(5px);
 }
+.carousel-arrow.prev { left: -22px; }
+.carousel-arrow.next { right: -22px; }
 
-.pet-group {
-  position: relative;
-  display: flex; align-items: flex-end; justify-content: center;
-  width: 100%; height: 80%;
+.social-badge {
+  position: absolute; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px); color: white; padding: 10px 18px; border-radius: 100px;
+  display: flex; align-items: center; gap: 10px; z-index: 5; box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
+.badge-insta { top: 10%; right: -50px; }
+.badge-patients { bottom: 15%; left: -50px; }
+.social-badge strong { display: block; font-size: 1rem; color: var(--orange); }
 
-/* Cachorro sólido (Cor areia/creme para contrastar no verde) */
-.solid-dog {
-  font-size: clamp(12rem, 24vw, 20rem);
-  color: var(--sand);
-  z-index: 1;
-  transform-origin: bottom center;
-  animation: breatheDog 4s ease-in-out infinite;
+.carousel-dots {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 5;
 }
+.dot { width: 8px; height: 8px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; }
+.dot.active { background: white; width: 18px; border-radius: 10px; }
 
-/* Gato sólido (Cor Laranja) - Sobreposto ao cachorro */
-.solid-cat {
-  font-size: clamp(7rem, 14vw, 11rem);
-  color: var(--orange);
-  z-index: 2;
-  margin-left: -4rem; /* Sobreposição */
-  transform-origin: bottom center;
-  animation: breatheCat 4s ease-in-out infinite 1s; /* Delay para dessincronizar respiração */
-}
+/* SEÇÃO SINTOMAS (COM ANIMAÇÃO DE PETS À ESQUERDA) */
+.sintomas-sec { background: var(--sand); overflow: hidden; }
+.sintomas-layout { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 4rem; align-items: center; }
 
-/* Animações de respiração suave (Apenas escala no eixo Y) */
-@keyframes breatheDog {
-  0%, 100% { transform: scaleY(1); }
-  50% { transform: scaleY(1.03); }
-}
-@keyframes breatheCat {
-  0%, 100% { transform: scaleY(1); }
-  50% { transform: scaleY(1.05); }
-}
+/* Animação de Pets Sólidos */
+.sint-anim-container { position: relative; width: 100%; aspect-ratio: 1/1; display: flex; align-items: flex-end; justify-content: center; }
+.pet-group { position: relative; display: flex; align-items: flex-end; width: 100%; }
+.solid-dog { font-size: 16rem; color: var(--white); z-index: 1; transform-origin: bottom center; animation: breathe 4s ease-in-out infinite; }
+.solid-cat { font-size: 9rem; color: var(--orange); z-index: 2; margin-left: -3rem; animation: breathe 4s ease-in-out infinite 1s; }
+.floating-element { position: absolute; z-index: 3; animation: floatOrganic 5s ease-in-out infinite; }
+.leaf-cannabis { color: var(--green-mid); font-size: 4rem; top: 10%; right: 10%; }
+.heart-health { color: var(--orange); font-size: 2rem; top: 30%; left: 10%; animation-delay: 2s; }
 
-/* Folha de Cannabis e Coração flutuantes */
-.floating-element {
-  position: absolute;
-  z-index: 3;
-  animation: floatOrganic 6s ease-in-out infinite;
-}
-.leaf-cannabis {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(3rem, 6vw, 4.5rem);
-  top: 10%; right: 15%;
-  transform: rotate(15deg);
-}
-.heart-health {
-  color: var(--orange);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  top: 30%; left: 15%;
-  animation-delay: 1.5s;
-  animation-duration: 5s;
-}
+@keyframes breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.04); } }
+@keyframes floatOrganic { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(10deg); } }
 
-@keyframes floatOrganic {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(10deg); }
-}
-
-/* SECTIONS (Margens Ampliadas Globalmente) */
-section { padding: clamp(3.5rem,6vw,6rem) clamp(2rem,6vw,3rem); }
-.inner { max-width: 1180px; margin: 0 auto; }
-.sec-label-pill {
-  display: inline-block; background: var(--green-light); color: white;
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 6px 14px; border-radius: 100px; margin-bottom: 1rem;
-}
-h2.sec-title {
-  font-size: clamp(2rem,3.5vw,2.8rem); font-weight: 800;
-  color: var(--text-dark); line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 1rem;
-}
-.sec-desc { font-size: 1rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; max-width: 550px; }
-
-
-/* SINTOMAS */
-.sintomas-sec { background: var(--sand); }
-.sintomas-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap: 12px; margin-top: 2.5rem; }
+.sintomas-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap: 12px; margin-top: 2rem; }
 .sint-btn {
-  background: white; border: 1.5px solid rgba(0,0,0,0.06);
-  border-radius: var(--r-md); padding: 1.25rem 1rem;
-  cursor: pointer; text-align: left; transition: all .2s; font-family: var(--font);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  background: white; border: 1.5px solid rgba(0,0,0,0.06); border-radius: var(--r-md); padding: 1.25rem 1rem;
+  cursor: pointer; text-align: left; transition: all .2s;
 }
-.sint-btn:hover { border-color: var(--orange); box-shadow: 0 8px 20px rgba(239, 117, 34, 0.15); transform: translateY(-3px); }
+.sint-btn:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(239, 117, 34, 0.1); }
 .sint-btn.sel { background: var(--orange-pale); border-color: var(--orange); }
-.sint-icon { font-size: 1.6rem; margin-bottom: 10px; }
-.sint-name { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); line-height: 1.3; }
+.sint-name { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-top: 8px; display: block; }
 .sint-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 3rem; }
 
 /* PROCESSO (ETAPAS) */
 .processo-sec { background: var(--cream); }
-.processo-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
-.processo-header h2 { max-width: 500px; margin-bottom: 0; }
-.processo-header-right { text-align: right; max-width: 400px; }
-.processo-header-right .badge { display: inline-block; background: var(--green-pale); color: var(--green-mid); font-size: 0.75rem; font-weight: 700; padding: 6px 16px; border-radius: 100px; margin-bottom: 10px; letter-spacing: 0.05em; }
-.processo-header-right p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-
-.steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; }
+.steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 3rem;}
 .step-card {
   background: white; border-radius: var(--r-lg); padding: 2rem 1.5rem;
-  border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-  display: flex; flex-direction: column; height: 100%; transition: transform .3s;
+  border: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; height: 100%; transition: transform .3s;
 }
 .step-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-.step-icon-box {
-  width: 70px; height: 70px; background: var(--green-pale); border-radius: 20px;
-  display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;
-  font-size: 1.8rem; color: var(--green-dark);
-}
-.step-badge-mini {
-  display: inline-block; background: var(--green-pale); color: var(--green-mid);
-  font-size: 0.65rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; margin-bottom: 12px; align-self: flex-start;
-}
-.step-pre { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2px; line-height: 1; }
+.step-icon-box { width: 70px; height: 70px; background: var(--green-pale); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; font-size: 1.8rem; }
+.step-badge-mini { display: inline-block; background: var(--green-pale); color: var(--green-mid); font-size: 0.65rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; margin-bottom: 12px; }
 .step-title-text { font-size: 1.15rem; font-weight: 800; color: var(--green-dark); line-height: 1.2; margin-bottom: auto; }
-.step-more {
-  margin-top: 2rem; font-size: 0.8rem; font-weight: 600; color: var(--green-mid);
-  display: flex; align-items: center; gap: 6px; text-decoration: none;
-}
-.step-more::before {
-  content: '+'; display: flex; align-items: center; justify-content: center;
-  width: 18px; height: 18px; border: 1.5px solid var(--green-mid); border-radius: 50%;
-  font-size: 14px; font-weight: 400;
-}
+.step-more { margin-top: 2rem; font-size: 0.8rem; font-weight: 600; color: var(--green-mid); display: flex; align-items: center; gap: 6px; text-decoration: none; }
 
 /* QUEM SOMOS */
 .qs-sec { background: var(--sand); }
-.qs-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 3rem; margin-bottom: 3.5rem; flex-wrap: wrap; }
-.qs-header-left { flex: 1; min-width: 300px; }
-.qs-header-left h2 span { color: var(--orange); }
-.qs-stats-row { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-.qs-stat-box { 
-  background: white; padding: 1.5rem 1.25rem; border-radius: var(--r-md); 
-  min-width: 160px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
-}
-.qs-stat-box h3 { font-size: 2rem; font-weight: 800; color: var(--green-dark); line-height: 1; margin-bottom: 8px; }
-.qs-stat-box p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; font-weight: 400; }
-.qs-stat-box p strong { color: var(--green-dark); }
-
-.qs-body { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.qs-text-blocks { border-left: 2px solid var(--green-light); padding-left: 1.5rem; }
-.qs-text-blocks p { font-size: 0.95rem; font-weight: 300; color: var(--text-body); line-height: 1.8; margin-bottom: 1.5rem; }
-.qs-text-blocks p:last-child { margin-bottom: 0; }
-.qs-text-blocks strong { color: var(--green-dark); font-weight: 600; }
-
-.qs-carousel {
-  position: relative; width: 100%; aspect-ratio: 4/3; 
-  border-radius: var(--r-xl); overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-}
-.qs-carousel img {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
-}
+.qs-body { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem;}
+.qs-carousel { position: relative; width: 100%; aspect-ratio: 4/3; border-radius: var(--r-xl); overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+.qs-carousel img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s; }
 .qs-carousel img.active { opacity: 1; }
-
-/* CTA FINAL */
-.cta-final { background: var(--green-dark); text-align: center; padding: clamp(4rem,8vw,6rem) clamp(2rem,5vw,3rem); }
-.cta-final h2 { font-size: clamp(2rem,3.5vw,3.2rem); font-weight: 800; color: white; line-height: 1.2; margin-bottom: 1.25rem; }
-.cta-final p { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; }
-.cta-final-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
 
 /* FOOTER */
 footer {
-  background: #07120a; color: rgba(255,255,255,0.4);
-  padding: 4rem clamp(2rem,6vw,3rem);
-  text-align: center; font-size: 0.8rem; line-height: 1.8;
+  background: #07120a; color: rgba(255,255,255,0.4); padding: 4rem 2rem; text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
 }
-.footer-logo {
-  max-width: 180px; height: auto;
-  display: block; margin: 0 auto;
-  filter: brightness(0) invert(1); /* Renderiza em Branco */
-}
-.footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.5rem; }
-.footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; font-weight: 500; }
-.footer-links a:hover { color: white; }
-.footer-copy { font-weight: 300; max-width: 600px; margin: 0 auto; }
+.footer-logo { max-width: 180px; filter: brightness(0) invert(1); }
+.footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500; }
 
-/* ─── MODAL (FORMULÁRIO BRANCO/CLARO COM CONTRASTE) ─── */
-.modal-overlay {
-  display: none; position: fixed; inset: 0; z-index: 500;
-  background: rgba(7, 18, 10, 0.85); backdrop-filter: blur(8px);
-  align-items: center; justify-content: center; padding: 1rem;
-}
+/* MODAL BRANCO */
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(7, 18, 10, 0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1rem; }
 .modal-overlay.open { display: flex; }
-.modal {
-  background: var(--white);
-  border-radius: var(--r-xl);
-  width: 100%; max-width: 540px; max-height: 90svh;
-  overflow-y: auto; position: relative;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-  animation: modalIn .3s ease forwards;
-}
-@keyframes modalIn {
-  from { opacity: 0; transform: scale(0.95) translateY(15px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-.modal-head {
-  background: var(--white); 
-  padding: 2.5rem 2.5rem 1.5rem;
-  text-align: center; position: sticky; top: 0; z-index: 2;
-  border-radius: var(--r-xl) var(--r-xl) 0 0; 
-  border-bottom: 1px solid var(--border-light); 
-}
-.modal-icons { display: flex; justify-content: center; gap: -8px; margin-bottom: 1.25rem; }
-.modal-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--white); }
-.modal-icon:first-child { background: var(--green-pale); margin-right: -12px; z-index: 2; color: var(--green-dark);}
-.modal-icon:last-child { background: var(--orange-pale); color: var(--orange);}
-.modal-head h3 { font-size: 1.25rem; font-weight: 800; color: var(--green-dark); line-height: 1.35; margin-bottom: 8px; }
+.modal { background: var(--white); border-radius: var(--r-xl); width: 100%; max-width: 540px; max-height: 90svh; overflow-y: auto; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
+.modal-head { background: var(--white); padding: 2.5rem 2.5rem 1.5rem; text-align: center; border-bottom: 1px solid var(--border-light); }
+.modal-head h3 { font-size: 1.25rem; font-weight: 800; color: var(--green-dark); }
 .modal-head h3 span { color: var(--orange); }
-.modal-head p { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
-
-.modal-close { 
-  position: absolute; top: 1.25rem; right: 1.25rem; 
-  background: rgba(0,0,0,0.04); border: none; border-radius: 50%; 
-  width: 36px; height: 36px; cursor: pointer; color: var(--text-muted); font-size: 1.1rem; 
-  display: flex; align-items: center; justify-content: center; transition: all .2s; 
-}
-.modal-close:hover { background: rgba(0,0,0,0.08); color: var(--text-dark); }
-
 .modal-body { padding: 2rem 2.5rem 2.5rem; }
-.modal-steps-bar { display: flex; gap: 6px; margin-bottom: 2rem; }
-.mstep-dot { height: 4px; border-radius: 2px; flex: 1; background: var(--border-light); transition: all .3s; }
-.mstep-dot.active { background: var(--orange); }
-.mstep-dot.done { background: var(--green-light); }
-
-.fg { margin-bottom: 1.25rem; position: relative;}
-.flabel { display: block; font-size: 0.85rem; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
-.finput { 
-  width: 100%; padding: 12px 15px; font-family: var(--font); font-size: 0.95rem; 
-  background: #FAFAFA; border: 1.5px solid var(--border-light); 
-  border-radius: var(--r-sm); color: var(--text-dark); outline: none; transition: border .2s, box-shadow .2s; 
-}
-.finput::placeholder { color: #A0AAB2; }
-.finput:focus { border-color: var(--orange); background: white; box-shadow: 0 0 0 3px rgba(239, 117, 34, 0.15); }
-.finput.error { border-color: #D32F2F; background: #FFF5F5; }
+.finput { width: 100%; padding: 12px 15px; background: #FAFAFA; border: 1.5px solid var(--border-light); border-radius: var(--r-sm); color: var(--text-dark); outline: none; }
+.finput:focus { border-color: var(--orange); }
 .error-msg { color: #D32F2F; font-size: 0.8rem; font-weight: 500; margin-top: 5px; display: none; }
-
-.radio-opts { display: flex; flex-direction: column; gap: 8px; }
-.radio-opt { 
-  display: flex; align-items: center; gap: 12px; padding: 12px 15px; 
-  border: 1.5px solid var(--border-light); border-radius: var(--r-sm); 
-  cursor: pointer; transition: all .2s; font-size: 0.95rem; color: var(--text-body); background: #FAFAFA; 
-}
-.radio-opt:hover { border-color: var(--orange); background: white; }
-.radio-opt.sel { border-color: var(--orange); background: var(--orange-pale); color: var(--orange-dark); font-weight: 600; }
-
-.rdot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #A1B2A6; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .2s; background: white;}
-.radio-opt.sel .rdot { border-color: var(--orange); background: var(--orange); }
-.radio-opt.sel .rdot::after { content: ''; width: 8px; height: 8px; background: white; border-radius: 50%; }
-
-.chk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.chk-opt { 
-  display: flex; align-items: center; gap: 10px; padding: 12px; 
-  border: 1.5px solid var(--border-light); border-radius: var(--r-sm); 
-  cursor: pointer; font-size: 0.9rem; color: var(--text-body); background: #FAFAFA; transition: all .2s;
-}
-.chk-opt:hover { border-color: var(--orange); background: white; }
-.chk-opt.sel { border-color: var(--orange); background: var(--orange-pale); color: var(--orange-dark); font-weight: 600; }
-
-.chkbox { width: 20px; height: 20px; border: 2px solid #A1B2A6; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: transparent; background: white; transition: all .2s;}
-.chk-opt.sel .chkbox { background: var(--orange); border-color: var(--orange); color: white; }
-.chk-opt.sel .chkbox::after { content: '✓'; font-weight: bold; }
-
-.outros-reveal { display: none; margin-top: 10px; }
-.outros-reveal.show { display: block; }
-.mform-step { display: none; }
-.mform-step.active { display: block; }
-
-.mbtn-row { display: flex; gap: 10px; margin-top: 2rem; }
-.mbtn-primary { flex: 1; background: var(--orange); color: white; font-family: var(--font); font-weight: 700; font-size: 1rem; padding: 14px 20px; border: none; border-radius: 100px; cursor: pointer; transition: all .2s; box-shadow: 0 4px 12px rgba(239, 117, 34, 0.25); }
-.mbtn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(239, 117, 34, 0.35); }
-.mbtn-back { background: transparent; color: var(--green-dark); border: 1.5px solid var(--border-light); font-family: var(--font); padding: 14px 24px; border-radius: 100px; cursor: pointer; font-weight: 600; transition: all .2s;}
-.mbtn-back:hover { background: #f0f0f0; border-color: #A1B2A6; }
-
-.mprivacy { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 1.25rem; font-weight: 500; }
-.mprivacy i { color: var(--orange); margin-right: 4px; }
-
-.msuccess { display: none; text-align: center; padding: 2rem 0; }
-.msuccess.show { display: block; }
-.msuccess-emoji { font-size: 4rem; margin-bottom: 1rem; }
-.msuccess h3 { font-size: 1.5rem; font-weight: 800; color: var(--green-dark); margin-bottom: 0.75rem; }
-.msuccess p { font-size: 1rem; font-weight: 400; color: var(--text-body); line-height: 1.6;}
+.mbtn-primary { width: 100%; background: var(--orange); color: white; font-weight: 700; padding: 15px; border: none; border-radius: 100px; cursor: pointer; margin-top: 1rem; }
 
 /* RESPONSIVO MOBILE */
 @media (max-width: 950px) {
-  .nav-logo img { max-height: 28px; }
-  .nav-btn { font-size: 0.75rem; padding: 10px 18px; }
+  .hero { grid-template-columns: 1fr; text-align: center; min-height: auto; }
+  .hero-left { padding: 3rem 2rem; align-items: center; }
+  .hero-right { padding: 0 2rem 4rem; }
+  .social-badge { display: none; }
+  .carousel-arrow { width: 36px; height: 44px; }
   
-  .hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto; min-height: auto; }
-  .hero-text { grid-column: 1; grid-row: 1; padding: 3rem clamp(2rem,6vw,3rem) 1.5rem clamp(2rem,6vw,3rem); text-align: left; }
-  .hero-media { grid-column: 1; grid-row: 2; padding: 1rem clamp(2rem,6vw,3rem); }
-  .hero-stats { grid-column: 1; grid-row: 3; padding: 1rem clamp(2rem,6vw,3rem) 4rem clamp(2rem,6vw,3rem); flex-wrap: wrap; gap: 1rem; }
-
-  .hero h1 { font-size: 2.2rem; }
+  .sintomas-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .sint-anim-container { max-width: 250px; margin: 0 auto; }
+  .solid-dog { font-size: 10rem; }
+  .solid-cat { font-size: 6rem; }
   
-  /* Ajuste das formas vetoriais no Mobile */
-  .hero-anim-container { max-width: 100%; aspect-ratio: 16/9; }
-
-  .steps-grid { grid-template-columns: 1fr; }
-  .processo-header { flex-direction: column; align-items: flex-start; }
-  .processo-header-right { text-align: left; }
-
-  .qs-body { grid-template-columns: 1fr; gap: 2.5rem; }
-  .qs-stats-row { flex-direction: column; width: 100%; }
-  
-  .modal-body { padding: 1.5rem 1.5rem 2rem; }
-  .modal-head { padding: 2rem 1.5rem 1.25rem; }
-  .chk-grid { grid-template-columns: 1fr; }
-  .btn-outline, .btn-outline-white { width: 100%; }
-  .btn-orange { width: 100%; justify-content: center; }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  .steps-grid, .qs-body { grid-template-columns: 1fr; }
+  .btn-orange, .btn-outline-white { width: 100%; justify-content: center; }
 }
 </style>
 </head>
@@ -506,8 +248,7 @@ footer {
 </nav>
 
 <section class="hero" style="padding:0;">
-
-  <div class="hero-text">
+  <div class="hero-left">
     <div class="hero-pill-badge"><span class="dot"></span> Tratamentos naturais com cannabis medicinal</div>
     <h1>Seu pet pode voltar a ter <span class="highlight">conforto e qualidade</span> de vida.</h1>
     <p class="hero-sub">A Associação Alternativa oferece orientação especializada em cada etapa do tratamento, com acompanhamento profissional e produtos de qualidade — 100% online.</p>
@@ -518,109 +259,98 @@ footer {
     </div>
   </div>
 
-  <div class="hero-media">
-    <div class="hero-anim-container">
+  <div class="hero-right">
+    <div class="hero-carousel-container">
+      <div class="social-badge badge-insta">
+        <i class="fab fa-instagram"></i>
+        <div class="text">Mais de <strong>20 mil</strong>seguidores</div>
+      </div>
+      <div class="social-badge badge-patients">
+        <i class="fas fa-user-check"></i>
+        <div class="text">Mais de <strong>20 mil</strong>pacientes</div>
+      </div>
       
+      <div class="hero-carousel" id="heroCarousel">
+        <img src="https://i.postimg.cc/Fs4Cb9cj/canabidiol-para-caes-cachorro-adulto.jpg" alt="Pet" class="active">
+        <img src="https://i.postimg.cc/FFgV40kt/27736.jpg" alt="Pet em tratamento">
+        
+        <div class="carousel-dots">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+      
+      <button class="carousel-arrow prev" onclick="moveHero(-1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="carousel-arrow next" onclick="moveHero(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<section class="sintomas-sec">
+  <div class="inner sintomas-layout">
+    
+    <div class="sint-anim-container">
       <i class="fas fa-cannabis floating-element leaf-cannabis"></i>
       <i class="fas fa-heart floating-element heart-health"></i>
-
       <div class="pet-group">
         <i class="fas fa-dog solid-dog"></i>
         <i class="fas fa-cat solid-cat"></i>
       </div>
+    </div>
 
-    </div>
-  </div>
+    <div>
+      <div class="sec-label-pill">Condições atendidas</div>
+      <h2 class="sec-title">Quais sintomas ou condições seu pet está enfrentando?</h2>
+      <p class="sec-desc">Selecione abaixo as opções mais próximas do quadro atual e fale com nossa equipe.</p>
+      
+      <div class="sintomas-grid">
+        <button class="sint-btn" onclick="this.classList.toggle('sel')">🦴 <span class="sint-name">Dores persistentes</span></button>
+        <button class="sint-btn" onclick="this.classList.toggle('sel')">😰 <span class="sint-name">Ansiedade e agitação</span></button>
+        <button class="sint-btn" onclick="this.classList.toggle('sel')">⚡ <span class="sint-name">Crises convulsivas</span></button>
+        <button class="sint-btn" onclick="this.classList.toggle('sel')">🧠 <span class="sint-name">Epilepsia</span></button>
+        <button class="sint-btn" onclick="this.classList.toggle('sel')">🐾 <span class="sint-name">Dif. de locomoção</span></button>
+        <button class="sint-btn" onclick="this.classList.toggle('sel')">😣 <span class="sint-name">Desconforto frequente</span></button>
+      </div>
 
-  <div class="hero-stats">
-    <div class="stat-box">
-      <i class="fas fa-paw"></i>
-      <span class="stat-num">+2.000</span>
-      <div class="stat-label">pets acolhidos</div>
-    </div>
-    <div class="stat-box">
-      <i class="fas fa-user-md"></i>
-      <span class="stat-num">+1.000</span>
-      <div class="stat-label">médicos parceiros</div>
-    </div>
-    <div class="stat-box">
-      <i class="fas fa-calendar-check"></i>
-      <span class="stat-num">Desde 2021</span>
-      <div class="stat-label">em operação</div>
-    </div>
-  </div>
-
-</section>
-
-<section class="sintomas-sec">
-  <div class="inner">
-    <div class="sec-label-pill">Condições atendidas</div>
-    <h2 class="sec-title">Quais sintomas ou condições seu pet está enfrentando?</h2>
-    <p class="sec-desc">Selecione abaixo as opções mais próximas do quadro atual e fale com nossa equipe.</p>
-    <div class="sintomas-grid" id="sint-sec">
-      <button class="sint-btn" data-v="Dores persistentes" onclick="toggleSint(this)"><div class="sint-icon">🦴</div><div class="sint-name">Dores persistentes</div></button>
-      <button class="sint-btn" data-v="Ansiedade e agitação" onclick="toggleSint(this)"><div class="sint-icon">😰</div><div class="sint-name">Ansiedade e agitação</div></button>
-      <button class="sint-btn" data-v="Crises convulsivas" onclick="toggleSint(this)"><div class="sint-icon">⚡</div><div class="sint-name">Crises convulsivas</div></button>
-      <button class="sint-btn" data-v="Epilepsia" onclick="toggleSint(this)"><div class="sint-icon">🧠</div><div class="sint-name">Epilepsia</div></button>
-      <button class="sint-btn" data-v="Dificuldade de locomoção" onclick="toggleSint(this)"><div class="sint-icon">🐾</div><div class="sint-name">Dif. de locomoção</div></button>
-      <button class="sint-btn" data-v="Desconforto frequente" onclick="toggleSint(this)"><div class="sint-icon">😣</div><div class="sint-name">Desconforto frequente</div></button>
-      <button class="sint-btn" data-v="Falta de apetite" onclick="toggleSint(this)"><div class="sint-icon">🍽️</div><div class="sint-name">Falta de apetite</div></button>
-      <button class="sint-btn" data-v="Medo excessivo e fobias" onclick="toggleSint(this)"><div class="sint-icon">😨</div><div class="sint-name">Medo excessivo fobias</div></button>
-      <button class="sint-btn" data-v="Cuidados paliativos" onclick="toggleSint(this)"><div class="sint-icon">❤️</div><div class="sint-name">Cuidados paliativos</div></button>
-      <button class="sint-btn" data-v="Câncer" onclick="toggleSint(this)"><div class="sint-icon">🔬</div><div class="sint-name">Câncer</div></button>
-    </div>
-    <div class="sint-cta">
-      <button class="btn-orange" onclick="openModalWithSintomas()"><i class="fas fa-paw"></i> Iniciar tratamento →</button>
-      <button class="btn-outline" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver como funciona</button>
+      <div class="sint-cta">
+        <button class="btn-orange" onclick="openModal()"><i class="fas fa-paw"></i> Iniciar tratamento →</button>
+        <button class="btn-outline" style="border: 1px solid #ccc; padding: 14px 30px; border-radius: 100px;" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver como funciona</button>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="processo-sec" id="como-funciona">
   <div class="inner">
-    <div class="processo-header">
-      <div>
-        <h2 class="sec-title">Passo a passo até <br>a solução</h2>
-      </div>
-      <div class="processo-header-right">
-        <span class="badge">PROCESSO</span>
-        <p>Entenda o caminho completo, do primeiro contato ao acompanhamento do tratamento.</p>
-      </div>
-    </div>
-    
+    <h2 class="sec-title" style="text-align:center;">Passo a passo até a solução</h2>
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-icon-box">💬</div>
         <div class="step-badge-mini">ETAPA 1</div>
-        <div class="step-pre">Contato e</div>
-        <div class="step-title-text">Triagem<br>Inicial</div>
+        <div class="step-title-text">Triagem Inicial</div>
         <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
       </div>
       <div class="step-card">
         <div class="step-icon-box">📄</div>
         <div class="step-badge-mini">ETAPA 2</div>
-        <div class="step-pre">Cadastro e</div>
         <div class="step-title-text">Documentos</div>
         <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
       </div>
       <div class="step-card">
         <div class="step-icon-box">🩺</div>
         <div class="step-badge-mini">ETAPA 3</div>
-        <div class="step-pre">Validação da</div>
-        <div class="step-title-text">Receita<br>Médica</div>
+        <div class="step-title-text">Receita Médica</div>
         <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
       </div>
       <div class="step-card">
         <div class="step-icon-box">💳</div>
         <div class="step-badge-mini">ETAPA 4</div>
-        <div class="step-pre">Taxa</div>
-        <div class="step-title-text">Associativa</div>
+        <div class="step-title-text">Taxa Associativa</div>
         <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
       </div>
       <div class="step-card">
         <div class="step-icon-box">📦</div>
         <div class="step-badge-mini">ETAPA 5</div>
-        <div class="step-pre">Compra do produto e</div>
         <div class="step-title-text">Entrega</div>
         <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
       </div>
@@ -628,279 +358,76 @@ footer {
   </div>
 </section>
 
-<section class="qs-sec">
-  <div class="inner">
-    <div class="qs-header">
-      <div class="qs-header-left">
-        <div class="sec-label-pill">QUEM SOMOS?</div>
-        <h2 class="sec-title">Uma associação<br>com <span>propósito!</span></h2>
-      </div>
-      <div class="qs-stats-row">
-        <div class="qs-stat-box">
-          <h3>+1.000</h3>
-          <p>médicos <strong>prescritores parceiros</strong> em todo o Brasil</p>
-        </div>
-        <div class="qs-stat-box">
-          <h3>+5.000</h3>
-          <p>associados ativos para tratamento de <strong>patologias humanas</strong></p>
-        </div>
-        <div class="qs-stat-box">
-          <h3>+2.000</h3>
-          <p>associados para tratamento de <strong>patologias animais</strong></p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="qs-body">
-      <div class="qs-text-blocks">
-        <p>Desde 2021, a <strong>Associação Alternativa</strong> conecta pacientes, tutores e prescritores como uma organização sem fins lucrativos. Oferecemos suporte humanizado e seguro a famílias em busca de terapias complementares que respeitam a ciência, a legislação e o bem-estar individual animal.</p>
-        <p>Somos mais do que uma associação — <strong>somos uma comunidade unida pelo desejo de transformar vidas.</strong> Acreditamos que a saúde deve ser um direito, e que o tratamento com cannabis medicinal veterinária é uma ponte essencial para o bem-estar de animais que enfrentam condições médicas desafiadoras.</p>
-      </div>
-      <div>
-        <div class="qs-carousel" id="aboutCarousel">
-          <img src="https://associacaoalternativa.com.br/wp-content/uploads/2026/03/quem-somos-1.jpg" alt="Equipe" class="active">
-          <img src="https://associacaoalternativa.com.br/wp-content/uploads/2026/03/quem-somos-2.jpg" alt="Associação">
-          <img src="https://associacaoalternativa.com.br/wp-content/uploads/2026/03/fundador.jpg" alt="Fundador">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-final">
-  <div class="inner">
-    <h2>Chegou a hora de buscar o bem-estar de <br><span>quem sempre esteve ao seu lado.</span></h2>
-    <p>Tratamento acessível, seguro e 100% online. Especialistas prontos para te atender.</p>
-    <div class="cta-final-btns">
-      <button class="btn-orange" onclick="openModal()" style="background: white; color: var(--green-dark);"><i class="fas fa-paw"></i> Iniciar meu tratamento agora →</button>
-      <button class="btn-outline-white" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver o passo a passo</button>
-    </div>
-  </div>
-</section>
-
 <footer>
-  <img src="https://i.postimg.cc/28951dHZ/ASSO-2.png" alt="Associação Alternativa" class="footer-logo">
+  <img src="https://i.postimg.cc/28951dHZ/ASSO-2.png" alt="Logo Branca" class="footer-logo">
   <div class="footer-links">
     <a href="#">Política de Privacidade</a>
     <a href="#">Termos de Uso</a>
     <a href="#">LGPD</a>
   </div>
-  <div class="footer-copy">
-    <p>© 2026 Associação Alternativa. Todos os direitos reservados.</p>
-    <p style="margin-top:4px;">Este site tem caráter informativo. O tratamento com cannabis medicinal é legalizado pela ANVISA.</p>
-  </div>
+  <p>© 2026 Associação Alternativa. Todos os direitos reservados.</p>
 </footer>
 
-<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
-  <div class="modal" id="modal">
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target==this)closeModal()">
+  <div class="modal">
     <div class="modal-head">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div class="modal-icons">
-        <div class="modal-icon">🩺</div>
-        <div class="modal-icon">🐾</div>
-      </div>
-      <h3>Falta pouco para iniciar a jornada<br><span>do seu pet!</span></h3>
-      <p>Preencha abaixo e receba orientação especializada</p>
+      <h3>Inicie a jornada do seu <span>Pet!</span></h3>
+      <p>Preencha os dados abaixo</p>
     </div>
-
     <div class="modal-body">
-      <div class="modal-steps-bar">
-        <div class="mstep-dot active" id="md1"></div>
-        <div class="mstep-dot" id="md2"></div>
-        <div class="mstep-dot" id="md3"></div>
+      <div class="fg" style="margin-bottom:15px">
+        <label class="flabel" style="font-weight:700">Nome Completo *</label>
+        <input class="finput" type="text" id="f-nome" placeholder="Nome e sobrenome">
+        <div class="error-msg" id="err-nome">Insira nome e sobrenome.</div>
       </div>
-
-      <div class="mform-step active" id="ms1">
-        <div class="fg">
-          <label class="flabel">Nome completo *</label>
-          <input class="finput" type="text" id="f-nome" placeholder="Nome e sobrenome">
-          <div class="error-msg" id="err-nome">Por favor, insira nome e sobrenome.</div>
-        </div>
-        <div class="fg">
-          <label class="flabel">E-mail *</label>
-          <input class="finput" type="email" id="f-email" placeholder="seu@email.com">
-          <div class="error-msg" id="err-email">Insira um e-mail válido (ex: email@dominio.com).</div>
-        </div>
-        <div class="fg">
-          <label class="flabel">WhatsApp (com DDD) *</label>
-          <input class="finput" type="tel" id="f-whats" placeholder="(11) 99999-9999" maxlength="15" onkeyup="maskPhone(this)">
-          <div class="error-msg" id="err-whats">Insira um número de WhatsApp completo com DDD.</div>
-        </div>
-        <div class="fg">
-          <label class="flabel">Qual pet receberá o acompanhamento? *</label>
-          <div class="radio-opts" id="rg-especie">
-            <label class="radio-opt" onclick="pickRadio(this,'especie','Cachorro')"><div class="rdot"></div>🐕 Cachorro</label>
-            <label class="radio-opt" onclick="pickRadio(this,'especie','Gato')"><div class="rdot"></div>🐈 Gato</label>
-            <label class="radio-opt" onclick="pickRadio(this,'especie','Outro')"><div class="rdot"></div>🐇 Outro pet</label>
-          </div>
-          <div class="outros-reveal" id="outro-reveal">
-            <input class="finput" type="text" id="f-outro" placeholder="Qual animal?">
-          </div>
-          <div class="error-msg" id="err-esp">Selecione uma espécie.</div>
-        </div>
-        <div class="mbtn-row">
-          <button class="mbtn-primary" onclick="mNext(2)">Próximo →</button>
-        </div>
-        <p class="mprivacy"><i class="fas fa-lock"></i> Seus dados estão protegidos. Não fazemos spam.</p>
+      <div class="fg" style="margin-bottom:15px">
+        <label class="flabel" style="font-weight:700">WhatsApp *</label>
+        <input class="finput" type="tel" id="f-whats" placeholder="(11) 99999-9999" onkeyup="maskPhone(this)">
+        <div class="error-msg" id="err-whats">Insira um número válido.</div>
       </div>
-
-      <div class="mform-step" id="ms2">
-        <div class="fg">
-          <label class="flabel">Quais sintomas ou condições seu pet apresenta? *</label>
-          <div class="chk-grid" id="cg-sint">
-            <label class="chk-opt" onclick="toggleChk(this)"><div class="chkbox"></div>Dores persistentes</label>
-            <label class="chk-opt" onclick="toggleChk(this)"><div class="chkbox"></div>Ansiedade e agitação</label>
-            <label class="chk-opt" onclick="toggleChk(this)"><div class="chkbox"></div>Crises convulsivas</label>
-            <label class="chk-opt" onclick="toggleChk(this)"><div class="chkbox"></div>Epilepsia</label>
-            <label class="chk-opt" onclick="toggleChk(this)"><div class="chkbox"></div>Dif. de locomoção</label>
-            <label class="chk-opt" onclick="toggleChk(this)"><div class="chkbox"></div>Cuidados paliativos</label>
-          </div>
-          <div class="error-msg" id="err-sint">Selecione pelo menos um sintoma.</div>
-        </div>
-        <div class="fg">
-          <label class="flabel">Seu pet já tem diagnóstico? *</label>
-          <div class="radio-opts" id="rg-diag">
-            <label class="radio-opt" onclick="pickRadio(this,'diag','sim')"><div class="rdot"></div>✅ Sim, já possui diagnóstico</label>
-            <label class="radio-opt" onclick="pickRadio(this,'diag','invest')"><div class="rdot"></div>🔍 Ainda está em investigação</label>
-            <label class="radio-opt" onclick="pickRadio(this,'diag','nao')"><div class="rdot"></div>❌ Não possui diagnóstico</label>
-          </div>
-          <div class="error-msg" id="err-diag">Selecione uma opção de diagnóstico.</div>
-        </div>
-        <div class="mbtn-row">
-          <button class="mbtn-back" onclick="mNext(1)">← Voltar</button>
-          <button class="mbtn-primary" onclick="mNext(3)">Próximo →</button>
-        </div>
-      </div>
-
-      <div class="mform-step" id="ms3">
-        <div class="fg">
-          <label class="flabel">O que você busca com a cannabis medicinal para seu pet? *</label>
-          <div class="radio-opts" id="rg-crenca">
-            <label class="radio-opt" onclick="pickRadio(this,'crenca','agora')"><div class="rdot"></div>Quero iniciar o tratamento agora.</label>
-            <label class="radio-opt" onclick="pickRadio(this,'crenca','duvidas')"><div class="rdot"></div>Quero tirar dúvidas primeiro.</label>
-          </div>
-          <div class="error-msg" id="err-crenca">Selecione uma opção.</div>
-        </div>
-        <div class="fg">
-          <label class="flabel">Tratamento atual do seu pet (opcional)</label>
-          <input class="finput" type="text" id="f-trat" placeholder="Ex: anti-inflamatório, fisioterapia...">
-        </div>
-        <div class="mbtn-row">
-          <button class="mbtn-back" onclick="mNext(2)">← Voltar</button>
-          <button class="mbtn-primary" onclick="submitForm()">Falar com especialista</button>
-        </div>
-        <p class="mprivacy"><i class="fas fa-lock"></i> Seus dados estão protegidos. Não fazemos spam.</p>
-      </div>
-
-      <div class="msuccess" id="msuccess">
-        <div class="msuccess-emoji">🎉</div>
-        <h3>Informações Recebidas!</h3>
-        <p>Em breve nossa equipe entrará em contato via WhatsApp para orientar você e seu pet.</p>
-      </div>
+      <button class="mbtn-primary" onclick="submitForm()">Falar com Especialista <i class="fas fa-arrow-right"></i></button>
+      <p class="mprivacy" style="text-align:center; font-size:12px; margin-top:10px"><i class="fas fa-lock"></i> Dados protegidos por LGPD.</p>
     </div>
   </div>
 </div>
 
 <script>
-// LÓGICA DO CARROSSEL SECUNDÁRIO (QUEM SOMOS)
-function initAboutCarousel() {
-  const slides = document.querySelectorAll('#aboutCarousel img');
-  if (slides.length > 1) {
-    let curr = 0;
-    setInterval(() => {
-      slides[curr].classList.remove('active');
-      curr = (curr + 1) % slides.length;
-      slides[curr].classList.add('active');
-    }, 4000);
-  }
+// CARROSSEL HERO
+let currentHero = 0;
+const heroSlides = document.querySelectorAll('#heroCarousel img');
+const heroDots = document.querySelectorAll('#heroCarousel .dot');
+
+function moveHero(step) {
+  heroSlides[currentHero].classList.remove('active');
+  heroDots[currentHero].classList.remove('active');
+  currentHero = (currentHero + step + heroSlides.length) % heroSlides.length;
+  heroSlides[currentHero].classList.add('active');
+  heroDots[currentHero].classList.add('active');
 }
+setInterval(() => moveHero(1), 5000);
 
-document.addEventListener('DOMContentLoaded', () => {
-  initAboutCarousel();
-});
+// MODAL E MÁSCARA
+function openModal() { document.getElementById('modal-overlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow=''; }
 
-function maskPhone(input) {
-  let v = input.value.replace(/\D/g, '');
-  if (v.length > 11) v = v.slice(0, 11);
-  if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-  if (v.length > 9) v = `${v.slice(0,9)}-${v.slice(9)}`;
-  input.value = v;
-}
-
-var fd = {};
-function clearErrors() {
-  document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
-  document.querySelectorAll('.finput').forEach(el => el.classList.remove('error'));
-}
-function showError(idInput, idMsg) {
-  if (idInput) document.getElementById(idInput).classList.add('error');
-  document.getElementById(idMsg).style.display = 'block';
-}
-
-function openModal() { document.getElementById('modal-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
-function handleOverlayClick(e) { if (e.target === document.getElementById('modal-overlay')) closeModal(); }
-
-function mNext(n) {
-  clearErrors();
-  if (n === 2 && !validaEtapa1()) return;
-  if (n === 3 && !validaEtapa2()) return;
-  
-  document.querySelectorAll('.mform-step').forEach(s => s.classList.remove('active'));
-  document.getElementById('ms' + n).classList.add('active');
-  
-  ['md1','md2','md3'].forEach((id, i) => {
-    var d = document.getElementById(id);
-    d.classList.remove('active','done');
-    if (i + 1 < n) d.classList.add('done');
-    else if (i + 1 === n) d.classList.add('active');
-  });
-}
-
-function validaEtapa1() {
-  let valido = true;
-  let nome = document.getElementById('f-nome').value.trim();
-  let email = document.getElementById('f-email').value.trim();
-  let whats = document.getElementById('f-whats').value.replace(/\D/g, '');
-  let esp = document.querySelector('#rg-especie .sel');
-
-  if (nome.split(' ').length < 2) { showError('f-nome', 'err-nome'); valido = false; }
-  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!regexEmail.test(email)) { showError('f-email', 'err-email'); valido = false; }
-  if (whats.length < 10) { showError('f-whats', 'err-whats'); valido = false; }
-  if (!esp) { showError(null, 'err-esp'); valido = false; }
-  return valido;
-}
-
-function validaEtapa2() {
-  let valido = true;
-  let chks = document.querySelectorAll('#cg-sint .sel');
-  let diag = document.querySelector('#rg-diag .sel');
-
-  if (chks.length === 0) { showError(null, 'err-sint'); valido = false; }
-  if (!diag) { showError(null, 'err-diag'); valido = false; }
-  return valido;
+function maskPhone(i) {
+  let v = i.value.replace(/\D/g,'');
+  if(v.length>11) v=v.slice(0,11);
+  if(v.length>2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+  if(v.length>9) v = `${v.slice(0,9)}-${v.slice(9)}`;
+  i.value = v;
 }
 
 function submitForm() {
-  clearErrors();
-  let crenca = document.querySelector('#rg-crenca .sel');
-  if (!crenca) { showError(null, 'err-crenca'); return; }
-
-  document.querySelectorAll('.mform-step').forEach(s => s.classList.remove('active'));
-  document.getElementById('msuccess').classList.add('show');
+  const nome = document.getElementById('f-nome').value.trim();
+  const whats = document.getElementById('f-whats').value.replace(/\D/g,'');
+  let ok = true;
+  if(nome.split(' ').length < 2) { document.getElementById('err-nome').style.display='block'; ok=false; }
+  if(whats.length < 10) { document.getElementById('err-whats').style.display='block'; ok=false; }
+  if(ok) {
+    document.querySelector('.modal-body').innerHTML = `<div style="text-align:center;padding:40px"><h2>🎉 Sucesso!</h2><p>Entraremos em contato em breve.</p></div>`;
+  }
 }
-
-function pickRadio(el, grp, val) {
-  document.querySelectorAll('#rg-' + grp + ' .radio-opt').forEach(r => r.classList.remove('sel'));
-  el.classList.add('sel');
-  if (grp === 'especie' && val === 'Outro') document.getElementById('outro-reveal').classList.add('show');
-  else if (grp === 'especie') document.getElementById('outro-reveal').classList.remove('show');
-}
-function toggleChk(el) { el.classList.toggle('sel'); }
-function toggleSint(btn) { btn.classList.toggle('sel'); }
-function openModalWithSintomas() { openModal(); }
-document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
