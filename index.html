@@ -506,17 +506,26 @@ nav {
 ========================================= */
 .processo-sec { background: var(--cream); padding: clamp(3.5rem, 6vw, 6rem) clamp(1.5rem, 6vw, 3rem); }
 .processo-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: start;
+  gap: 3rem;
   margin: 0 auto 1rem;
   max-width: 1180px;
 }
-.processo-header-left { flex: 1 1 560px; }
+.processo-header-left { min-width: 0; }
+.processo-title {
+  max-width: 840px;
+  font-size: 2.55rem;
+  line-height: 1.12;
+  margin-bottom: 0;
+}
+.processo-title .accent-line {
+  display: block;
+  color: var(--orange);
+}
 .processo-header-right {
-  max-width: 340px;
+  max-width: 300px;
   font-size: 0.95rem;
   color: var(--text-muted);
   font-weight: 300;
@@ -597,8 +606,19 @@ nav {
 ========================================= */
 .qs-sec { background: var(--sand); padding: clamp(3.5rem, 6vw, 6rem) clamp(1.5rem, 6vw, 3rem); }
 .qs-inner { max-width: 1180px; margin: 0 auto; }
-.qs-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 3rem; flex-wrap: wrap; }
-.qs-header-left { flex: 1 1 330px; min-width: 0; }
+.qs-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(520px, auto);
+  align-items: start;
+  gap: 3rem;
+}
+.qs-header-left { min-width: 0; }
+.qs-title {
+  max-width: 680px;
+  font-size: 2.35rem;
+  line-height: 1.12;
+  margin-bottom: 0;
+}
 .qs-header-left h2 span { color: var(--orange); }
 .qs-stats-row { display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: flex-end; }
 .qs-stat-box { background: var(--white); padding: 1.5rem 1.25rem; border-radius: var(--r-md); min-width: 160px; max-width: 190px; box-shadow: 0 5px 16px rgba(0,0,0,0.035); }
@@ -620,6 +640,7 @@ nav {
 .cta-final h2 { font-size: 3rem; font-weight: 900; color: var(--white); line-height: 1.2; margin-bottom: 1.25rem; letter-spacing: 0; }
 .cta-final p { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 2.4rem; }
 .cta-final-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.cta-final-btns .btn-orange { max-width: 430px; white-space: nowrap; }
 
 footer {
   background: #07120a;
@@ -836,6 +857,9 @@ footer {
 ========================================= */
 @media (max-width: 1200px) {
   .hero h1 { font-size: 2.85rem; }
+  .processo-title { font-size: 2.35rem; }
+  .qs-title { font-size: 2.15rem; }
+  .qs-header { grid-template-columns: minmax(0, 1fr) minmax(470px, auto); gap: 2rem; }
   .steps-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
@@ -887,26 +911,26 @@ footer {
     background: rgba(5, 26, 14, 0.22);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 15px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
+    padding: 1.05rem 0.65rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
     backdrop-filter: blur(5px);
   }
   .stat-item-mob {
-    display: grid;
-    grid-template-columns: 32px 1fr;
-    column-gap: 12px;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: left;
-    padding: 0 0 0.85rem;
-    margin-bottom: 0.85rem;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 0 0.65rem;
+    margin-bottom: 0;
+    border-bottom: 0;
+    border-right: 1px solid rgba(255,255,255,0.12);
   }
-  .stat-item-mob:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
-  .stat-item-mob i { grid-row: span 2; font-size: 1.25rem; color: rgba(255,255,255,0.84); }
-  .stat-item-mob strong { font-size: 1.65rem; font-weight: 900; color: var(--white); line-height: 1; }
-  .stat-item-mob span { font-size: 0.78rem; color: rgba(255,255,255,0.72); line-height: 1.35; }
+  .stat-item-mob:last-child { padding-bottom: 0; margin-bottom: 0; border-right: 0; }
+  .stat-item-mob i { font-size: 1.2rem; color: rgba(255,255,255,0.84); margin-bottom: 0.45rem; }
+  .stat-item-mob strong { font-size: 1.5rem; font-weight: 900; color: var(--white); line-height: 1; margin-bottom: 0.25rem; }
+  .stat-item-mob span { font-size: 0.68rem; color: rgba(255,255,255,0.72); line-height: 1.28; }
   .hero-btns-mobile {
     order: 4;
     display: flex;
@@ -941,12 +965,14 @@ footer {
   .sint-cta button { width: 100%; white-space: normal; }
 
   .processo-sec, .qs-sec { padding: 3rem 1.25rem; }
-  .processo-header { flex-direction: column; gap: 1rem; text-align: center; align-items: center; }
-  .processo-header-right { max-width: 100%; text-align: center; }
+  .processo-header { display: flex; flex-direction: column; gap: 1rem; text-align: center; align-items: center; }
+  .processo-title { max-width: 100%; font-size: 1.62rem; line-height: 1.15; }
+  .processo-header-right { max-width: 100%; text-align: center; padding-top: 0; }
   .steps-grid, .qs-body { grid-template-columns: 1fr; }
   .steps-grid { gap: 1rem; }
   .step-card { padding: 1.5rem; }
-  .qs-header { gap: 1.5rem; }
+  .qs-header { display: flex; flex-direction: column; gap: 1.5rem; }
+  .qs-title { max-width: 100%; font-size: 1.72rem; line-height: 1.14; }
   .qs-stats-row { flex-direction: column; width: 100%; gap: 1rem; }
   .qs-stat-box { width: 100%; max-width: none; margin: 0; padding: 1.35rem; text-align: center; }
   .qs-body { gap: 2rem; margin-top: 2rem; }
@@ -955,7 +981,8 @@ footer {
   .cta-final h2 { font-size: 1.75rem; }
   .cta-final p { font-size: 0.95rem; margin-bottom: 1.8rem; }
   .cta-final-btns { flex-direction: column; width: 100%; gap: 12px; }
-  .cta-final-btns button { width: 100%; white-space: normal; }
+  .cta-final-btns button { width: 100%; }
+  .cta-final-btns .btn-orange { max-width: 360px; font-size: 0.83rem; white-space: nowrap; padding-left: 16px; padding-right: 16px; }
   footer { padding: 3rem 1.25rem; }
 
   .modal-overlay { align-items: flex-end; padding: 0; }
@@ -977,6 +1004,12 @@ footer {
   .hero h1 { font-size: 1.72rem; }
   .btn-orange, .btn-outline-white, .btn-outline-gray { padding-left: 20px; padding-right: 20px; font-size: 0.88rem; }
   .sec-title { font-size: 1.68rem; }
+  .processo-title { font-size: 1.48rem; }
+  .qs-title { font-size: 1.52rem; }
+  .stat-item-mob { padding: 0 0.5rem; }
+  .stat-item-mob strong { font-size: 1.38rem; }
+  .stat-item-mob span { font-size: 0.62rem; }
+  .cta-final-btns .btn-orange { font-size: 0.78rem; padding-left: 12px; padding-right: 12px; }
   .sint-btn { min-height: 92px; }
   .footer-links { gap: 0.9rem; }
 }
@@ -1117,7 +1150,7 @@ footer {
   <div class="inner">
     <div class="processo-header">
       <div class="processo-header-left">
-        <h2 class="sec-title">O acompanhamento da Associação Alternativa<br>acontece em <span style="color:var(--orange)">cinco etapas simples</span></h2>
+        <h2 class="sec-title processo-title">O acompanhamento da Associação Alternativa acontece em <span class="accent-line">cinco etapas simples</span></h2>
       </div>
       <div class="processo-header-right">
         <span class="mini-badge">PROCESSO</span>
@@ -1170,7 +1203,7 @@ footer {
     <div class="qs-header">
       <div class="qs-header-left">
         <div class="sec-label-pill">QUEM SOMOS?</div>
-        <h2 class="sec-title">Uma associação que nasceu<br>para <span>transformar vidas!</span></h2>
+        <h2 class="sec-title qs-title">Uma associação que nasceu para <span>transformar vidas!</span></h2>
       </div>
       <div class="qs-stats-row">
         <div class="qs-stat-box">
@@ -1209,7 +1242,7 @@ footer {
     <h2>Chegou a hora de buscar o bem-estar de <br><span style="color:var(--orange)">quem sempre esteve ao seu lado.</span></h2>
     <p>Preencha as informações e fale com nossa equipe para iniciar o tratamento.</p>
     <div class="cta-final-btns">
-      <button class="btn-orange" type="button" onclick="openModal()" style="background: white; color: var(--green-dark); box-shadow: none;"><i class="fas fa-paw"></i> Quero iniciar o tratamento do meu pet! →</button>
+      <button class="btn-orange" type="button" onclick="openModal()" style="background: white; color: var(--green-dark); box-shadow: none;"><i class="fas fa-paw"></i> Iniciar tratamento do meu pet →</button>
       <button class="btn-outline-white" type="button" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver o passo a passo</button>
     </div>
   </div>
