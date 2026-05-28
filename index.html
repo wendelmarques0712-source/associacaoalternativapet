@@ -1,223 +1,884 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Associação Alternativa - Cannabis Medicinal</title>
-    <style>
-        /* Estilos Globais e Respiros */
-        body { font-family: 'Poppins', sans-serif; margin: 0; color: #1a1a1a; background-color: #faf8f5; }
-        .inner-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-        
-        /* Ajuste de respiros em mobile - global */
-        @media (max-width: 768px) {
-            .inner-section { padding: 40px 15px; }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cannabis Medicinal para Pets | Associação Alternativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+  --green-dark: #113620;
+  --green-mid: #1d5632;
+  --green-light: #2c854c;
+  --green-pale: #F0F7F3;
+  --orange: #ef7522;
+  --orange-dark: #cf5f16;
+  --orange-pale: #FEF3DC;
+  --cream: #F7F5F0;
+  --sand: #EAE6DB;
+  --white: #FFFFFF;
+  --text-dark: #1A2B22;
+  --text-body: #3D4A40;
+  --text-muted: #627568;
+  --border-light: #D1D9D3;
+  --font: 'Poppins', sans-serif;
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+}
 
-        /* Cabeçalho - Correção: Fundo branco e sempre visível */
-        header {
-            background-color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            box-sizing: border-box;
-        }
-        .logo-section img { height: 40px; }
-        .header-cta button {
-            background-color: #f1692a;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--cream); color: var(--text-body); overflow-x: hidden; line-height: 1.6; }
 
-        /* Seção Hero (Primeira Dobra) */
-        .hero-section {
-            background-color: #2b6140; /* Verde escuro */
-            color: white;
-            padding-top: 130px; /* Compensa o cabeçalho fixo */
-            text-align: center;
-        }
-        .hero-headline { font-size: 40px; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
-        .hero-headline span { color: #f1692a; }
-        .hero-description { font-size: 16px; opacity: 0.8; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
-        
-        /* Badges de stats - Integrados conforme referência */
-        .hero-stats {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-around;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-        }
-        .stat-item { text-align: center; }
-        .stat-icon { font-size: 30px; margin-bottom: 10px; opacity: 0.9; }
-        .stat-number { font-size: 24px; font-weight: 800; }
-        .stat-label { font-size: 12px; opacity: 0.8; }
+/* =========================================
+   NAV (CABEÇALHO BRANCO FIXO)
+========================================= */
+nav {
+  position: sticky; top: 0; z-index: 999;
+  background: var(--white);
+  padding: 0 clamp(1.5rem, 6vw, 3rem);
+  display: flex; align-items: center; justify-content: space-between;
+  height: 75px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { max-height: 42px; width: auto; display: block; }
+.nav-btn {
+  background: var(--orange); color: white;
+  font-family: var(--font); font-weight: 700; font-size: 0.85rem;
+  padding: 12px 24px; border: none; border-radius: 100px;
+  cursor: pointer; white-space: nowrap; transition: all .2s;
+}
+.nav-btn:hover { background: var(--orange-dark); transform: translateY(-1px); }
 
-        /* Reintrodução e Correção do Texto de Confiança (+20mil pets) - Mobile */
-        .reassurance-orange-block {
-            display: none; /* Escondido em desktop, mostrado em mobile */
-            color: #f1692a;
-            font-size: 14px;
-            margin-top: -10px;
-            margin-bottom: 25px;
-            font-weight: 500;
-        }
+/* BOTOES GERAIS */
+.btn-orange {
+  background: var(--orange); color: white; font-family: var(--font); font-weight: 700; font-size: 0.95rem;
+  padding: 15px 32px; border: none; border-radius: 100px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+  transition: all .3s ease; text-decoration: none; white-space: nowrap; box-shadow: 0 6px 16px rgba(239, 117, 34, 0.25); justify-content: center;
+}
+.btn-orange:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(239, 117, 34, 0.35); }
 
-        /* Ajustes Mobile Primeira Dobra - Conforme referência */
-        @media (max-width: 768px) {
-            .hero-section { text-align: left; }
-            .hero-section img { display: block; margin-top: 30px; border-radius: 15px; } /* Mostra a imagem na dobra mobile */
-            .hero-headline { font-size: 28px; }
-            .hero-stats { flex-direction: column; gap: 20px; padding: 15px; margin-bottom: 30px; text-align: center; }
-            
-            /* Correção Mobile: Mostra o texto acima do botão final */
-            .reassurance-orange-block { display: block; }
-        }
+.btn-outline-white {
+  background: transparent; color: white; font-family: var(--font); font-weight: 500; font-size: 0.95rem;
+  padding: 14px 30px; border: 1px solid rgba(255,255,255,0.3); border-radius: 100px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  transition: all .3s ease; text-decoration: none;
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
 
-        /* Botões de Ação na Hero */
-        .hero-cta { display: flex; gap: 20px; justify-content: center; margin-bottom: 50px; }
-        .btn-start-treatment {
-            background-color: #f1692a;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-how-it-works {
-            background: none;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.btn-outline-gray {
+  background: transparent; color: var(--text-dark); font-family: var(--font); font-weight: 500; font-size: 0.95rem;
+  padding: 14px 30px; border: 1px solid #ccc; border-radius: 100px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  transition: all .3s ease; text-decoration: none;
+}
+.btn-outline-gray:hover { background: rgba(0,0,0,0.05); border-color: #999; }
 
-        @media (max-width: 768px) {
-            .hero-cta { flex-direction: column; gap: 15px; align-items: flex-start; }
-            .btn-start-treatment, .btn-how-it-works { width: 100%; text-align: center; justify-content: center; }
-        }
+/* =========================================
+   HERO SECTION
+========================================= */
+.hero {
+  background: var(--green-mid);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3rem,6vw,5rem) clamp(1.5rem,6vw,4.5rem);
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 30% 50%, rgba(44,133,76,0.3) 0%, transparent 70%);
+  pointer-events: none; z-index: 1;
+}
 
-        /* Outras Seções (Removidos respiros excessivos em mobile) */
-        .conditions-section, .process-section, .benefits-section, .testimonials-section { background-color: white; }
-        .about-section { background-color: #faf8f5; }
-        .cta-final-section { background-color: #2b6140; color: white; text-align: center; }
-        
-        .section-title { font-size: 32px; font-weight: 800; margin-bottom: 40px; text-align: center; color: #1a1a1a; }
-        
-        @media (max-width: 768px) {
-            .section-title { font-size: 24px; margin-bottom: 25px; }
-        }
+.hero-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
 
-        /* Estilo para links de "Mais informações" e Processo */
-        .more-info-link { display: flex; align-items: center; gap: 5px; color: #3b8c5a; font-weight: 500; font-size: 12px; margin-top: 10px; cursor: pointer; }
-        .more-info-link svg { width: 12px; height: 12px; fill: #3b8c5a; }
+.hero-pill-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: white; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px; width: fit-content; margin-bottom: 1.5rem;
+}
+.hero-pill-badge .dot { width: 6px; height: 6px; background: white; border-radius: 50%; }
 
-        /* Rodapé */
-        footer {
-            background-color: #0d120f;
-            color: #595959;
-            padding: 50px 20px;
-            font-size: 12px;
-            text-align: center;
-        }
-        footer img { height: 30px; margin-bottom: 20px; }
-        .footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 20px; }
-    </style>
+.hero h1 { font-size: clamp(2rem,4vw,3.4rem); font-weight: 800; color: white; line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 1.25rem; }
+.hero h1 .highlight { color: var(--orange); }
+.hero-sub { font-size: clamp(0.95rem,1.3vw,1.1rem); font-weight: 300; color: rgba(255,255,255,0.85); max-width: 500px; line-height: 1.7; margin-bottom: 2rem; }
+
+/* Flexbox parts */
+.h-col-left { flex: 1; }
+.h-col-right { flex: 1; display: flex; align-items: center; justify-content: center; }
+
+/* HERO STATS */
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3.5rem;
+  padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15);
+}
+.stat-num { font-size: 1.8rem; font-weight: 800; color: var(--orange); display: block; line-height: 1; }
+.stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 6px; }
+
+/* HERO CAROUSEL */
+.hero-carousel-container { position: relative; width: 100%; max-width: 440px; }
+.hero-carousel { position: relative; width: 100%; aspect-ratio: 4/5; border-radius: var(--r-xl); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.hero-carousel img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s; }
+.hero-carousel img.active { opacity: 1; }
+
+.carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; z-index: 5; backdrop-filter: blur(5px); }
+.carousel-arrow:hover { background: rgba(255,255,255,0.4); }
+.carousel-arrow.prev { left: -22px; }
+.carousel-arrow.next { right: -22px; }
+
+.social-badge { position: absolute; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); color: white; padding: 10px 18px; border-radius: 100px; display: flex; align-items: center; gap: 10px; z-index: 5; box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+.badge-insta { top: 10%; right: -50px; }
+.badge-patients { bottom: 15%; left: -50px; }
+.social-badge strong { display: block; font-size: 1rem; color: var(--orange); }
+
+.carousel-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 5; }
+.dot { width: 8px; height: 8px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; }
+.dot.active { background: white; width: 18px; border-radius: 10px; }
+
+.hero-btns { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+/* =========================================
+   MANIFESTO
+========================================= */
+.manifesto-sec {
+  background: var(--green-dark);
+  text-align: center;
+  padding: clamp(3rem,6vw,5rem) clamp(1.5rem,6vw,3rem);
+}
+.manifesto-sec .inner { max-width: 800px; margin: 0 auto; }
+.manifesto-sec h2 {
+  font-size: clamp(1.8rem,3vw,2.4rem); font-weight: 800;
+  color: white; line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 1rem;
+}
+.manifesto-sec h2 span { color: var(--orange); }
+.manifesto-text {
+  font-size: clamp(0.95rem,1.2vw,1.05rem); font-weight: 300;
+  color: rgba(255,255,255,0.8); line-height: 1.85; margin-bottom: 1.25rem;
+}
+.manifesto-text strong { color: white; font-weight: 600; }
+.manifesto-highlight {
+  display: inline-block;
+  background: rgba(239,117,34,0.15); border: 1px solid rgba(239,117,34,0.3);
+  color: var(--orange); font-size: 0.9rem; font-weight: 600;
+  padding: 12px 24px; border-radius: 100px; margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   SINTOMAS (PETS NO TOPO)
+========================================= */
+.sintomas-sec { 
+  background: var(--sand); 
+  text-align: center;
+  padding: 4rem clamp(1.5rem,6vw,3rem) 5rem; 
+}
+.sint-anim-container { 
+  position: relative; width: 100%; max-width: 250px; height: 120px; 
+  margin: 0 auto 1.5rem; display: flex; align-items: flex-end; justify-content: center; 
+}
+.pet-group { display: flex; align-items: flex-end; justify-content: center; }
+.solid-dog { font-size: 6rem; color: var(--green-mid); z-index: 1; transform-origin: bottom center; animation: breathe 4s ease-in-out infinite; }
+.solid-cat { font-size: 3.5rem; color: var(--orange); z-index: 2; margin-left: -0.8rem; animation: breathe 4s ease-in-out infinite 1s; }
+@keyframes breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.05); } }
+
+.sintomas-header { margin-bottom: 2.5rem; }
+.sec-label-pill { display: inline-block; background: var(--green-light); color: white; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 1rem; }
+.sec-title { font-size: clamp(2rem,3.5vw,2.8rem); font-weight: 800; color: var(--text-dark); line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 1rem; }
+.sec-desc { font-size: 1rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; max-width: 550px; margin: 0 auto;}
+
+.sintomas-grid { 
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 12px; 
+  max-width: 1000px; margin: 0 auto 2.5rem;
+}
+.sint-btn {
+  background: white; border: 1.5px solid rgba(0,0,0,0.05); border-radius: var(--r-md); 
+  padding: 1.25rem; display: flex; flex-direction: column; align-items: flex-start;
+  cursor: pointer; transition: all .2s; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+.sint-btn:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(239, 117, 34, 0.1); }
+.sint-btn.sel { background: var(--orange-pale); border-color: var(--orange); }
+.sint-icon { font-size: 1.4rem; margin-bottom: 8px; line-height: 1;}
+.sint-name { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); text-align: left; line-height: 1.3;}
+.sint-cta { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+/* =========================================
+   PROCESSO (ETAPAS)
+========================================= */
+.processo-sec { background: var(--cream); padding: clamp(3.5rem,6vw,6rem) clamp(1.5rem,6vw,3rem); }
+.processo-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; max-width: 1180px; margin: 0 auto;}
+.processo-header-right { max-width: 340px; font-size: 0.95rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; padding-top: 0.5rem; }
+.steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 2rem; max-width: 1180px; margin: 2rem auto 0;}
+.step-card { background: white; border-radius: var(--r-lg); padding: 2rem 1.5rem; border: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; height: 100%; transition: transform .3s; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+.step-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+.step-icon-box { width: 70px; height: 70px; background: var(--green-pale); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.8rem; color: var(--green-dark); }
+.step-badge-mini { display: inline-block; background: var(--green-pale); color: var(--green-mid); font-size: 0.65rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; margin-bottom: 10px; align-self: flex-start;}
+.step-title-text { font-size: 1.05rem; font-weight: 800; color: var(--green-dark); line-height: 1.2; margin-bottom: 0.75rem; }
+.step-desc-text { font-size: 0.82rem; color: var(--text-muted); font-weight: 400; line-height: 1.6; flex: 1; }
+.step-more { margin-top: 1.5rem; font-size: 0.8rem; font-weight: 600; color: var(--green-mid); display: flex; align-items: center; gap: 6px; text-decoration: none; cursor: pointer; background: none; border: none; font-family: var(--font); padding: 0; }
+
+/* =========================================
+   QUEM SOMOS
+========================================= */
+.qs-sec { background: var(--sand); padding: clamp(3.5rem,6vw,6rem) clamp(1.5rem,6vw,3rem);}
+.qs-inner { max-width: 1180px; margin: 0 auto; }
+.qs-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 3rem; flex-wrap: wrap; }
+.qs-header-left { flex: 1; min-width: 300px; }
+.qs-header-left h2 span { color: var(--orange); }
+.qs-stats-row { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.qs-stat-box { background: white; padding: 1.5rem 1.25rem; border-radius: var(--r-md); min-width: 160px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+.qs-stat-box h3 { font-size: 2rem; font-weight: 800; color: var(--green-dark); line-height: 1; margin-bottom: 8px; }
+.qs-stat-box p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; font-weight: 400; }
+.qs-stat-box p strong { color: var(--green-dark); }
+.qs-body { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem;}
+.qs-text-blocks { border-left: 2px solid var(--green-light); padding-left: 1.5rem; }
+.qs-text-blocks p { font-size: 0.95rem; font-weight: 300; color: var(--text-body); line-height: 1.8; margin-bottom: 1.5rem; }
+.qs-carousel { position: relative; width: 100%; aspect-ratio: 4/3; border-radius: var(--r-xl); overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+.qs-carousel img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s; }
+.qs-carousel img.active { opacity: 1; }
+
+/* =========================================
+   CTA FINAL E FOOTER
+========================================= */
+.cta-final { background: var(--green-dark); text-align: center; padding: clamp(4rem,8vw,6rem) clamp(1.5rem,5vw,3rem); }
+.cta-final h2 { font-size: clamp(2rem,3.5vw,3.2rem); font-weight: 800; color: white; line-height: 1.2; margin-bottom: 1.25rem; }
+.cta-final p { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; }
+.cta-final-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+footer {
+  background: #07120a; color: rgba(255,255,255,0.4); padding: 4rem 1.5rem; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+}
+.footer-logo { max-width: 200px; height: auto; object-fit: contain; filter: brightness(0) invert(1); }
+.footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500; }
+
+/* =========================================
+   MODAL (BRANCO ALTO CONTRASTE)
+========================================= */
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(7, 18, 10, 0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1rem; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--white); border-radius: var(--r-xl); width: 100%; max-width: 560px; max-height: 92svh; overflow-y: auto; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
+.modal-head { background: var(--white); padding: 2.5rem 2.5rem 1.5rem; text-align: center; border-bottom: 1px solid var(--border-light); position: relative; }
+.modal-icons { display: flex; justify-content: center; gap: -8px; margin-bottom: 1.25rem; }
+.modal-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--white); }
+.modal-icon:first-child { background: var(--green-pale); margin-right: -12px; z-index: 2; color: var(--green-dark);}
+.modal-icon:last-child { background: var(--orange-pale); color: var(--orange);}
+.modal-head h3 { font-size: 1.25rem; font-weight: 800; color: var(--green-dark); line-height: 1.35; margin-bottom: 8px; }
+.modal-head h3 span { color: var(--orange); }
+.modal-head p { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
+.modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: rgba(0,0,0,0.06); border: none; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; color: var(--text-muted); font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all .2s; z-index: 10; font-weight: 700; line-height: 1; }
+.modal-close:hover { background: rgba(0,0,0,0.12); color: var(--text-dark); transform: scale(1.05); }
+
+.modal-body { padding: 2rem 2.5rem 2.5rem; }
+.modal-steps-bar { display: flex; gap: 6px; margin-bottom: 2rem; }
+.mstep-dot { height: 4px; border-radius: 2px; flex: 1; background: var(--border-light); transition: all .3s; }
+.mstep-dot.active { background: var(--orange); }
+.mstep-dot.done { background: var(--green-light); }
+.mstep-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1.5rem; letter-spacing: 0.02em; }
+.mstep-label span { color: var(--orange); font-weight: 700; }
+.fg { margin-bottom: 1.25rem; position: relative;}
+.flabel { display: block; font-size: 0.85rem; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+.finput, .ftextarea { width: 100%; padding: 12px 15px; font-family: var(--font); font-size: 0.95rem; background: #FAFAFA; border: 1.5px solid var(--border-light); border-radius: var(--r-sm); color: var(--text-dark); outline: none; transition: border .2s; }
+.finput:focus, .ftextarea:focus { border-color: var(--orange); background: white; }
+.finput.error { border-color: #D32F2F; background: #FFF5F5; }
+.error-msg { color: #D32F2F; font-size: 0.8rem; font-weight: 500; margin-top: 5px; display: none; }
+.radio-opts { display: flex; flex-direction: column; gap: 8px; }
+.radio-opt { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border: 1.5px solid var(--border-light); border-radius: var(--r-sm); cursor: pointer; transition: all .2s; font-size: 0.92rem; color: var(--text-body); background: #FAFAFA; }
+.radio-opt.sel { border-color: var(--orange); background: var(--orange-pale); color: var(--orange-dark); font-weight: 600; }
+.rdot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #A1B2A6; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: white;}
+.radio-opt.sel .rdot { border-color: var(--orange); background: var(--orange); }
+.radio-opt.sel .rdot::after { content: ''; width: 8px; height: 8px; background: white; border-radius: 50%; }
+
+.chk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.chk-opt { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1.5px solid var(--border-light); border-radius: var(--r-sm); cursor: pointer; transition: all .2s; font-size: 0.84rem; color: var(--text-body); background: #FAFAFA; }
+.chk-opt.sel { border-color: var(--orange); background: var(--orange-pale); color: var(--orange-dark); font-weight: 600; }
+.chkbox { width: 20px; height: 20px; border-radius: 5px; border: 2px solid #A1B2A6; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: white; font-size: 0.65rem; color: transparent;}
+.chk-opt.sel .chkbox { border-color: var(--orange); background: var(--orange); color: white; }
+
+.mform-step { display: none; }
+.mform-step.active { display: block; }
+.mbtn-row { display: flex; gap: 10px; margin-top: 2rem; }
+.mbtn-primary { flex: 1; background: var(--orange); color: white; font-family: var(--font); font-weight: 700; font-size: 1rem; padding: 14px 20px; border: none; border-radius: 100px; cursor: pointer; transition: all .2s; box-shadow: 0 4px 12px rgba(239, 117, 34, 0.25); }
+.mbtn-back { background: transparent; color: var(--green-dark); border: 1.5px solid var(--border-light); font-family: var(--font); padding: 14px 24px; border-radius: 100px; cursor: pointer; font-weight: 600; transition: all .2s;}
+.mprivacy { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 1.25rem; font-weight: 500; }
+.msuccess { display: none; text-align: center; padding: 2rem 0; }
+.msuccess.show { display: block; }
+
+/* =========================================
+   RESPONSIVO MOBILE - OTIMIZAÇÕES
+========================================= */
+@media (min-width: 951px) {
+  .hero-wrapper { display: grid; grid-template-columns: 1fr 1fr; }
+  .hero-stats-mobile { display: none; }
+}
+
+@media (max-width: 950px) {
+  nav { padding: 0 1rem; height: 65px; }
+  .nav-logo img { max-height: 24px; }
+  .nav-btn { font-size: 0.75rem; padding: 10px 16px; }
+
+  /* Hero Mobile Reordenado: Texto -> Imagem -> Stats -> Botoes */
+  .hero { padding: 2rem 1rem 3rem; }
+  .hero-wrapper { display: flex; flex-direction: column; }
+  
+  .hero-left { padding: 0; order: 1; text-align: center; align-items: center; margin-bottom: 2rem;}
+  .hero-right { padding: 0; order: 2; width: 100%; margin-bottom: 2rem;}
+  .hero-stats-mobile { order: 3; margin-bottom: 2.5rem; }
+  .hero-btns { order: 4; flex-direction: column; width: 100%; gap: 15px; }
+  .hero-btns button { width: 100%; justify-content: center; }
+  
+  .hero-stats { display: none; } /* Oculta stats do desktop */
+  
+  /* Formato dos stats mobile como na referência */
+  .hero-stats-mobile {
+    background: rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    backdrop-filter: blur(5px);
+  }
+  .stat-item-mob { display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .stat-item-mob:last-child { padding-bottom: 0; border-bottom: none; }
+  .stat-item-mob i { font-size: 1.5rem; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
+  .stat-item-mob strong { font-size: 1.8rem; font-weight: 800; color: white; line-height: 1; margin-bottom: 4px;}
+  .stat-item-mob span { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+
+  .social-badge { display: none; }
+  .carousel-arrow { width: 36px; height: 36px; }
+
+  /* Manifesto */
+  .manifesto-sec { padding: 3rem 1.5rem; }
+  .manifesto-highlight { font-size: 0.85rem; padding: 15px; margin-bottom: 1rem;}
+
+  /* Sintomas */
+  .sintomas-sec { padding: 3rem 1.5rem; }
+  .sintomas-grid { grid-template-columns: repeat(2, 1fr); gap: 10px;}
+  .sint-btn { padding: 1rem; }
+  .sint-name { font-size: 0.8rem; }
+  .sint-cta { flex-direction: column; width: 100%; gap: 15px; }
+  .sint-cta button { width: 100%; justify-content: center; }
+
+  /* Outras seções */
+  .steps-grid, .qs-body { grid-template-columns: 1fr; }
+  .qs-stats-row { flex-direction: column; width: 100%; gap: 1rem; }
+  .qs-stat-box { width: 100%; margin: 0; padding: 1.5rem; text-align: center;}
+  
+  .processo-header { flex-direction: column; gap: 1rem; text-align: center; align-items: center; }
+  .processo-header-right { max-width: 100%; text-align: center;}
+
+  .cta-final h2 { font-size: 1.65rem; }
+  .cta-final p { font-size: 0.95rem; }
+  .cta-final-btns { flex-direction: column; width: 100%; gap: 15px; }
+  .cta-final-btns button { width: 100%; justify-content: center; }
+  
+  .modal-body { padding: 1.5rem 1.5rem 2rem; }
+  .modal-head { padding: 2rem 1.5rem 1.25rem; }
+  .chk-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-section">
-            <img src="https://alternativa-api.vercel.app/images/logo_head.png" alt="Associação Alternativa">
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://associacaoalternativa.com.br/wp-content/uploads/2025/05/logo-associacao-alternativa.svg" alt="Associação Alternativa">
+  </a>
+  <button class="nav-btn" onclick="openModal()">Iniciar tratamento</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-wrapper">
+    
+    <div class="hero-left">
+      <div class="hero-pill-badge"><span class="dot"></span> Tratamentos naturais com cannabis medicinal</div>
+      <h1>Seu pet pode voltar a ter <span class="highlight">conforto e qualidade</span> de vida com a cannabis medicinal.</h1>
+      <p class="hero-sub">A Associação Alternativa oferece orientação em cada etapa, com acompanhamento profissional e produtos de qualidade.</p>
+      
+      <div class="hero-stats">
+        <div><span class="stat-num">+2.000</span><div class="stat-label">pets acolhidos</div></div>
+        <div><span class="stat-num">+1.000</span><div class="stat-label">médicos parceiros</div></div>
+        <div><span class="stat-num">Desde 2021</span><div class="stat-label">em operação</div></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-carousel-container">
+        <div class="social-badge badge-insta">
+          <i class="fab fa-instagram"></i>
+          <div class="text">Mais de <strong>20 mil</strong> seguidores</div>
         </div>
-        <div class="header-cta">
-            <button>Iniciar Tratamento</button>
+        <div class="social-badge badge-patients">
+          <i class="fas fa-user-check"></i>
+          <div class="text">Mais de <strong>20 mil</strong> pacientes</div>
         </div>
-    </header>
-
-    <section class="hero-section">
-        <div class="inner-section">
-            <h1 class="hero-headline">Saiba como o tratamento com <span>cannabis medicinal</span> pode trazer seu bem-estar de volta.</h1>
-            <p class="hero-description">Acesso humanizado ao tratamento com cannabis medicinal. Recupere sua qualidade de vida com suporte técnico especializado e 100% online.</p>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-icon">👥</div>
-                    <div class="stat-number">+20mil</div>
-                    <div class="stat-label">pacientes já transformaram sua vida</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">✅</div>
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Online e seguro</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">🕒</div>
-                    <div class="stat-number">24h</div>
-                    <div class="stat-label">Atendimento humano</div>
-                </div>
-            </div>
-
-            <img src="https://alternativa-api.vercel.app/images/hero_img.png" alt="Tratamento com cannabis medicinal" style="max-width: 100%; border-radius: 15px; margin-bottom: 30px;" />
-
-            <p class="reassurance-orange-block">Mais de 2.000 pets já passaram pela nossa equipe em busca de uma nova possibilidade de cuidado com a cannabis medicinal veterinária.</p>
-
-            <div class="hero-cta">
-                <button class="btn-start-treatment">Quero iniciar meu tratamento →</button>
-                <button class="btn-how-it-works">Como funciona</button>
-            </div>
+        
+        <div class="hero-carousel" id="heroCarousel">
+          <img src="https://i.postimg.cc/Fs4Cb9cj/canabidiol-para-caes-cachorro-adulto.jpg" alt="Pet" class="active">
+          <img src="https://i.postimg.cc/FFgV40kt/27736.jpg" alt="Pet em tratamento">
+          <div class="carousel-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+          </div>
         </div>
-    </section>
+        
+        <button class="carousel-arrow prev" onclick="moveHero(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-arrow next" onclick="moveHero(1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
 
-    <section class="conditions-section inner-section">
-        <h2 class="section-title">Quais sintomas ou condições seu pet está enfrentando?</h2>
-        <div style="font-size:14px; opacity: 0.7; text-align: center; margin-top: -30px; margin-bottom: 40px;">Selecione abaixo as opções mais próximas do quadro atual e fale com nossa equipe.</div>
-        </section>
+    <div class="hero-stats-mobile">
+      <div class="stat-item-mob">
+        <i class="fas fa-paw"></i>
+        <strong>+20mil</strong>
+        <span>Pessoas e animais transformados</span>
+      </div>
+      <div class="stat-item-mob">
+        <i class="fas fa-shield-alt"></i>
+        <strong>100%</strong>
+        <span>Online e seguro</span>
+      </div>
+      <div class="stat-item-mob">
+        <i class="fas fa-clock"></i>
+        <strong>24h</strong>
+        <span>Atendimento humano</span>
+      </div>
+    </div>
 
-    <section class="process-section inner-section">
-        <h2 class="section-title">Passo a passo até a solução</h2>
-        <div class="more-info-link"><svg viewBox="0 0 1024 1024"><path d="M722.3 543.1L323.7 941.7c-17.2 17.2-45.1 17.2-62.3 0s-17.2-45.1 0-62.3l371.1-371.1L261.4 137.2c-17.2-17.2-17.2-45.1 0-62.3s45.1-17.2 62.3 0l398.6 398.6c17.2 17.2 17.2 45.1 0 62.3z"></path></svg>Mais informações</div>
-    </section>
+    <div class="hero-btns">
+      <button class="btn-orange" onclick="openModal()"><i class="fas fa-paw"></i> Quero iniciar o tratamento →</button>
+      <button class="btn-outline-white" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver como funciona</button>
+    </div>
 
-    <section class="cta-final-section inner-section">
-        <h2 class="section-title">Dê o primeiro passo para uma vida melhor</h2>
-        <div class="hero-cta" style="justify-content: center; margin-bottom: 0;">
-            <button class="btn-start-treatment">Quero iniciar meu tratamento →</button>
-            <button class="btn-how-it-works">Como funciona</button>
+  </div>
+</section>
+
+<section class="manifesto-sec">
+  <div class="inner">
+    <h2>Sabemos o quanto é difícil tentar de tudo<br>e ainda não ver o seu pet <span style="color:var(--orange)">bem</span></h2>
+    <p class="manifesto-text">Consultas, mudanças na rotina, novos medicamentos, pesquisas na internet… E mesmo assim a sensação continua sendo a de ver o animal perdendo a disposição aos poucos.</p>
+    <p class="manifesto-text">Muitos tutores convivem diariamente com crises, dores, ansiedade e o medo de não conseguir ajudar como gostariam. Se você chegou até aqui, provavelmente já sabe como essa sensação é pesada. <strong>A Alternativa existe para caminhar junto com você a partir de agora.</strong></p>
+    
+    <div class="manifesto-highlight">
+      <i class="fas fa-paw"></i> Mais de 2.000 pets já passaram pela nossa equipe em busca de uma nova possibilidade de cuidado com a cannabis medicinal veterinária.
+    </div>
+
+    <div style="margin-top: 1rem;">
+      <button class="btn-orange" onclick="openModal()"><i class="fas fa-paw"></i> Iniciar tratamento →</button>
+    </div>
+  </div>
+</section>
+
+<section class="sintomas-sec">
+  <div class="inner" style="text-align: center;">
+    
+    <div class="sint-anim-container">
+        <div class="pet-group">
+          <i class="fas fa-dog solid-dog"></i>
+          <i class="fas fa-cat solid-cat"></i>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <img src="https://alternativa-api.vercel.app/images/logo_head.png" alt="Associação Alternativa">
-        <div class="footer-links">
-            <a>Política de Privacidade</a>
-            <a>Termos de Uso</a>
-            <a>LGPD</a>
+    <div class="sintomas-header">
+      <div class="sec-label-pill">Condições atendidas</div>
+      <h2 class="sec-title">Quais sintomas ou condições<br>seu pet está enfrentando?</h2>
+      <p class="sec-desc">Selecione abaixo as opções mais próximas do quadro atual e fale com nossa equipe.</p>
+    </div>
+
+    <div class="sintomas-grid">
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🦴</div> <span class="sint-name">Dores persistentes</span></button>
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">😰</div> <span class="sint-name">Ansiedade e agitação</span></button>
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">⚡</div> <span class="sint-name">Crises convulsivas</span></button>
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🧠</div> <span class="sint-name">Epilepsia</span></button>
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🐾</div> <span class="sint-name">Dif. de locomoção</span></button>
+      
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">😣</div> <span class="sint-name">Desconforto frequente</span></button>
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🍽️</div> <span class="sint-name">Falta de apetite</span></button>
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">😨</div> <span class="sint-name">Medo excessivo e fobias</span></button>
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">❤️</div> <span class="sint-name">Cuidados paliativos</span></button>
+      <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🎗️</div> <span class="sint-name">Câncer</span></button>
+    </div>
+
+    <div class="sint-cta">
+      <button class="btn-orange" onclick="openModal()"><i class="fas fa-paw"></i> Iniciar tratamento →</button>
+      <button class="btn-outline-gray" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver como funciona</button>
+    </div>
+  </div>
+</section>
+
+<section class="processo-sec" id="como-funciona">
+  <div class="inner">
+    <div class="processo-header">
+      <div>
+        <h2 class="sec-title">O acompanhamento da Associação Alternativa<br>acontece em <span style="color:var(--orange)">cinco etapas simples</span></h2>
+      </div>
+      <div class="processo-header-right">
+        <span class="badge" style="display:inline-block; background:var(--green-pale); color:var(--green-mid); font-size:0.75rem; font-weight:700; padding:6px 16px; border-radius:100px; margin-bottom:10px;">PROCESSO</span>
+        <p>Entenda o caminho completo, do primeiro contato ao acompanhamento do tratamento.</p>
+      </div>
+    </div>
+    
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon-box">💬</div>
+        <div class="step-badge-mini">ETAPA 1</div>
+        <div class="step-title-text">Triagem Inicial</div>
+        <p class="step-desc-text">Nossa equipe realiza um primeiro atendimento para entender a rotina, os sintomas e as necessidades do seu pet.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="step-card">
+        <div class="step-icon-box">📄</div>
+        <div class="step-badge-mini">ETAPA 2</div>
+        <div class="step-title-text">Cadastro e Documentos</div>
+        <p class="step-desc-text">Você receberá um link para preencher os dados e enviar os documentos necessários para o cadastro.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="step-card">
+        <div class="step-icon-box">🩺</div>
+        <div class="step-badge-mini">ETAPA 3</div>
+        <div class="step-title-text">Receita Médica</div>
+        <p class="step-desc-text">Caso já possua receita veterinária, ela será validada pela equipe. Se ainda não possuir, nossa equipe indica profissionais parceiros.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="step-card">
+        <div class="step-icon-box">💳</div>
+        <div class="step-badge-mini">ETAPA 4</div>
+        <div class="step-title-text">Taxa Associativa</div>
+        <p class="step-desc-text">Após a validação, é realizada a contribuição associativa de R$ 15,00/mês para acesso ao acompanhamento e aos produtos.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="step-card">
+        <div class="step-icon-box">📦</div>
+        <div class="step-badge-mini">ETAPA 5</div>
+        <div class="step-title-text">Compra e Entrega</div>
+        <p class="step-desc-text">Com o cadastro aprovado, o pedido é liberado e enviado para o endereço informado. Após o recebimento, o tratamento segue com orientação de enfermeiro canábico.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="qs-sec">
+  <div class="inner">
+    <div class="qs-header">
+      <div class="qs-header-left">
+        <div class="sec-label-pill">QUEM SOMOS?</div>
+        <h2 class="sec-title">Uma associação que nasceu<br>para <span style="color:var(--orange)">transformar vidas!</span></h2>
+      </div>
+      <div class="qs-stats-row">
+        <div class="qs-stat-box">
+          <h3>+1.000</h3>
+          <p>médicos <strong>prescritores parceiros</strong> em todo o Brasil</p>
         </div>
-        <p>&copy; 2025 Associação Alternativa. Todos os direitos reservados.</p>
-        <p>Este site tem caráter informativo. O tratamento com cannabis medicinal é legalizado pela ANVISA.</p>
-    </footer>
+        <div class="qs-stat-box">
+          <h3>+5.000</h3>
+          <p>associados ativos em <strong>tratamentos humanos</strong></p>
+        </div>
+        <div class="qs-stat-box">
+          <h3>+2.000</h3>
+          <p>pets acolhidos pela <strong>Associação Alternativa</strong></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="qs-body">
+      <div class="qs-text-blocks">
+        <p>Desde 2021, a <strong>Associação Alternativa</strong> conecta pacientes, tutores e prescritores através de um acolhimento responsável e acessível no tratamento com cannabis medicinal. Hoje, apoiamos famílias que buscam mais qualidade de vida, tanto no cuidado humano quanto veterinário.</p>
+        <p>Mais do que uma associação — <strong>somos uma rede de apoio formada pelo desejo de oferecer novas possibilidades de cuidado com responsabilidade, segurança e acolhimento.</strong></p>
+      </div>
+      <div>
+        <div class="qs-carousel" id="aboutCarousel">
+          <img src="https://associacaoalternativa.com.br/wp-content/uploads/2026/03/quem-somos-1.jpg" alt="Equipe" class="active">
+          <img src="https://associacaoalternativa.com.br/wp-content/uploads/2026/03/quem-somos-2.jpg" alt="Associação">
+          <img src="https://associacaoalternativa.com.br/wp-content/uploads/2026/03/fundador.jpg" alt="Fundador">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="cta-final">
+  <div class="inner">
+    <h2>Chegou a hora de buscar o bem-estar de <br><span style="color:var(--orange)">quem sempre esteve ao seu lado.</span></h2>
+    <p>Preencha as informações e fale com nossa equipe para iniciar o tratamento!</p>
+    <div class="cta-final-btns">
+      <button class="btn-orange" onclick="openModal()" style="background: white; color: var(--green-dark);"><i class="fas fa-paw"></i> Quero iniciar o tratamento do meu pet! →</button>
+      <button class="btn-outline-white" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver o passo a passo</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="https://associacaoalternativa.com.br/wp-content/uploads/2025/05/logo-associacao-alternativa.svg" alt="Associação Alternativa" class="footer-logo">
+  <div class="footer-links">
+    <a href="#">Política de Privacidade</a>
+    <a href="#">Termos de Uso</a>
+    <a href="#">LGPD</a>
+  </div>
+  <p style="margin-top: 1rem;">© 2026 Associação Alternativa. Todos os direitos reservados.</p>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target==this)closeModal()">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar"><i class="fas fa-times"></i></button>
+      <div class="modal-icons">
+        <div class="modal-icon"><i class="fas fa-stethoscope"></i></div>
+        <div class="modal-icon"><i class="fas fa-paw"></i></div>
+      </div>
+      <h3>Falta pouco para iniciar a jornada<br><span>do seu pet!</span></h3>
+      <p>Preencha abaixo e receba orientação especializada</p>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-steps-bar">
+        <div class="mstep-dot active" id="md1"></div>
+        <div class="mstep-dot" id="md2"></div>
+        <div class="mstep-dot" id="md3"></div>
+        <div class="mstep-dot" id="md4"></div>
+      </div>
+
+      <div class="mform-step active" id="ms1">
+        <div class="mstep-label">Passo <span>1 de 4</span> — Seus dados</div>
+        <div class="fg">
+          <label class="flabel">Nome completo *</label>
+          <input class="finput" type="text" id="f-nome" placeholder="Nome e sobrenome">
+          <div class="error-msg" id="err-nome">Por favor, insira nome e sobrenome.</div>
+        </div>
+        <div class="fg">
+          <label class="flabel">E-mail *</label>
+          <input class="finput" type="email" id="f-email" placeholder="seu@email.com">
+          <div class="error-msg" id="err-email">Insira um e-mail válido.</div>
+        </div>
+        <div class="fg">
+          <label class="flabel">WhatsApp (com DDD) *</label>
+          <input class="finput" type="tel" id="f-whats" placeholder="(11) 99999-9999" maxlength="15" oninput="maskPhone(this)">
+          <div class="error-msg" id="err-whats">Insira um número válido com DDD.</div>
+        </div>
+        <div class="mbtn-row">
+          <button class="mbtn-primary" onclick="mNext(2)">Próximo →</button>
+        </div>
+        <p class="mprivacy"><i class="fas fa-lock"></i> Seus dados estão protegidos.</p>
+      </div>
+
+      <div class="mform-step" id="ms2">
+        <div class="mstep-label">Passo <span>2 de 4</span> — Sobre o pet</div>
+        <div class="fg">
+          <label class="flabel">Qual pet receberá o acompanhamento? *</label>
+          <div class="radio-opts" id="rg-pet">
+            <label class="radio-opt" onclick="pickRadio(this,'pet','cachorro'); document.getElementById('outro-pet-field').classList.remove('show');"><div class="rdot"></div>🐶 Cachorro</label>
+            <label class="radio-opt" onclick="pickRadio(this,'pet','gato'); document.getElementById('outro-pet-field').classList.remove('show');"><div class="rdot"></div>🐱 Gato</label>
+            <label class="radio-opt" onclick="pickRadio(this,'pet','outro'); document.getElementById('outro-pet-field').classList.add('show');"><div class="rdot"></div>🐾 Outro pet</label>
+          </div>
+          <div class="outro-pet-field" id="outro-pet-field">
+            <input class="finput" type="text" id="f-outro-pet" placeholder="Qual é o seu pet?" style="margin-top:8px;">
+          </div>
+          <div class="error-msg" id="err-pet">Selecione o tipo de pet.</div>
+        </div>
+        <div class="fg">
+          <label class="flabel">Quais sintomas ou condições seu pet apresenta? <span style="font-weight:400; color: var(--text-muted)">(pode selecionar mais de um)</span></label>
+          <div class="chk-grid" id="chk-sintomas">
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🦴 Dores persistentes</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>😰 Ansiedade e agitação</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>⚡ Crises convulsivas</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🧠 Epilepsia</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🐾 Dificuldade de locomoção</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>😣 Desconforto frequente</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🍽️ Falta de apetite</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>😨 Medo excessivo e fobias</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>❤️ Cuidados paliativos</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🎗️ Câncer</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);" style="grid-column: 1 / -1;"><div class="chkbox">✓</div>➕ Outros sintomas</label>
+          </div>
+          <div class="error-msg" id="err-sint">Selecione ao menos um sintoma.</div>
+        </div>
+        <div class="mbtn-row">
+          <button class="mbtn-back" onclick="mNext(1)">← Voltar</button>
+          <button class="mbtn-primary" onclick="mNext(3)">Próximo →</button>
+        </div>
+      </div>
+
+      <div class="mform-step" id="ms3">
+        <div class="mstep-label">Passo <span>3 de 4</span> — Diagnóstico</div>
+        <div class="fg">
+          <label class="flabel">Já possui diagnóstico? *</label>
+          <div class="radio-opts" id="rg-diag">
+            <label class="radio-opt" onclick="pickRadio(this,'diag','sim')"><div class="rdot"></div>✅ Sim, já possui diagnóstico</label>
+            <label class="radio-opt" onclick="pickRadio(this,'diag','invest')"><div class="rdot"></div>🔍 Ainda em investigação</label>
+          </div>
+          <div class="error-msg" id="err-diag">Selecione uma opção.</div>
+        </div>
+        <div class="fg">
+          <label class="flabel">Conhece a cannabis medicinal? *</label>
+          <div class="radio-opts" id="rg-conhece">
+            <label class="radio-opt" onclick="pickRadio(this,'conhece','sim')"><div class="rdot"></div>✅ Sim, já conheço</label>
+            <label class="radio-opt" onclick="pickRadio(this,'conhece','escutou')"><div class="rdot"></div>👂 Já escutei falar</label>
+            <label class="radio-opt" onclick="pickRadio(this,'conhece','acredita')"><div class="rdot"></div>💚 Sim, acredito que pode ajudar</label>
+            <label class="radio-opt" onclick="pickRadio(this,'conhece','duvidas')"><div class="rdot"></div>🤔 Tenho dúvidas mas quero entender melhor</label>
+          </div>
+          <div class="error-msg" id="err-conhece">Selecione uma opção.</div>
+        </div>
+        <div class="mbtn-row">
+          <button class="mbtn-back" onclick="mNext(2)">← Voltar</button>
+          <button class="mbtn-primary" onclick="mNext(4)">Próximo →</button>
+        </div>
+      </div>
+
+      <div class="mform-step" id="ms4">
+        <div class="mstep-label">Passo <span>4 de 4</span> — Última etapa</div>
+        <div class="fg">
+          <label class="flabel">O que você busca com a cannabis para seu pet? *</label>
+          <div class="radio-opts" id="rg-crenca">
+            <label class="radio-opt" onclick="pickRadio(this,'crenca','agora')"><div class="rdot"></div>Quero iniciar o tratamento agora.</label>
+            <label class="radio-opt" onclick="pickRadio(this,'crenca','duvidas')"><div class="rdot"></div>Quero tirar dúvidas primeiro.</label>
+          </div>
+          <div class="error-msg" id="err-crenca">Selecione uma opção.</div>
+        </div>
+        <div class="fg">
+          <label class="flabel">Alguma observação adicional? <span style="font-weight:400;color:var(--text-muted)">(opcional)</span></label>
+          <textarea class="ftextarea" id="f-obs" maxlength="200" placeholder="Conte-nos mais sobre o seu pet ou situação..." oninput="document.getElementById('char-count').textContent = this.value.length + '/200'"></textarea>
+          <div class="fchar-count" id="char-count">0/200</div>
+        </div>
+        <div class="mbtn-row">
+          <button class="mbtn-back" onclick="mNext(3)">← Voltar</button>
+          <button class="mbtn-primary" onclick="submitForm()">Falar com especialista 🐾</button>
+        </div>
+        <p class="mprivacy"><i class="fas fa-lock"></i> Não fazemos spam. Seus dados estão seguros.</p>
+      </div>
+
+      <div class="msuccess" id="msuccess">
+        <div class="msuccess-emoji">🎉</div>
+        <h3>Recebido!</h3>
+        <p>Em breve nossa equipe entrará em contato via WhatsApp para orientar você e seu pet na jornada de tratamento.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// CARROSSEL HERO
+let currentHero = 0;
+const heroSlides = document.querySelectorAll('#heroCarousel img');
+const heroDots = document.querySelectorAll('#heroCarousel .dot');
+
+function moveHero(step) {
+  heroSlides[currentHero].classList.remove('active');
+  heroDots[currentHero].classList.remove('active');
+  currentHero = (currentHero + step + heroSlides.length) % heroSlides.length;
+  heroSlides[currentHero].classList.add('active');
+  heroDots[currentHero].classList.add('active');
+}
+setInterval(() => moveHero(1), 5000);
+
+// CARROSSEL QUEM SOMOS
+const qsSlides = document.querySelectorAll('#aboutCarousel img');
+let currentQs = 0;
+if(qsSlides.length > 1) {
+  setInterval(() => {
+    qsSlides[currentQs].classList.remove('active');
+    currentQs = (currentQs + 1) % qsSlides.length;
+    qsSlides[currentQs].classList.add('active');
+  }, 4000);
+}
+
+// MODAL
+function openModal() { document.getElementById('modal-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+function maskPhone(i) {
+  let v = i.value.replace(/\D/g, '');
+  if (v.length > 11) v = v.slice(0, 11);
+  if (v.length > 10) { v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7); } 
+  else if (v.length > 6) { v = '(' + v.slice(0,2) + ') ' + v.slice(2,6) + '-' + v.slice(6); } 
+  else if (v.length > 2) { v = '(' + v.slice(0,2) + ') ' + v.slice(2); } 
+  else if (v.length > 0) { v = '(' + v; }
+  i.value = v;
+}
+
+function clearErrors() {
+  document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.finput').forEach(el => el.classList.remove('error'));
+}
+
+function validateStep(n) {
+  let ok = true;
+  if (n === 1) {
+    const nome = document.getElementById('f-nome').value.trim();
+    if (nome.split(' ').filter(p => p.length > 0).length < 2) { document.getElementById('err-nome').style.display = 'block'; document.getElementById('f-nome').classList.add('error'); ok = false; }
+    const email = document.getElementById('f-email').value.trim();
+    const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailReg.test(email)) { document.getElementById('err-email').style.display = 'block'; document.getElementById('f-email').classList.add('error'); ok = false; }
+    const whats = document.getElementById('f-whats').value.replace(/\D/g, '');
+    if (whats.length < 10) { document.getElementById('err-whats').style.display = 'block'; document.getElementById('f-whats').classList.add('error'); ok = false; }
+  }
+  if (n === 2) {
+    const pet = document.querySelector('#rg-pet .sel');
+    if (!pet) { document.getElementById('err-pet').style.display = 'block'; ok = false; } else {
+      const petVal = pet.getAttribute('data-val') || '';
+      if (petVal === 'outro') {
+        const outroPet = document.getElementById('f-outro-pet').value.trim();
+        if (!outroPet) { document.getElementById('f-outro-pet').classList.add('error'); document.getElementById('err-pet').textContent = 'Por favor, informe o tipo de pet.'; document.getElementById('err-pet').style.display = 'block'; ok = false; }
+      }
+    }
+    const sintSel = document.querySelectorAll('#chk-sintomas .sel');
+    if (sintSel.length === 0) { document.getElementById('err-sint').style.display = 'block'; ok = false; }
+  }
+  if (n === 3) {
+    const diag = document.querySelector('#rg-diag .sel');
+    if (!diag) { document.getElementById('err-diag').style.display = 'block'; ok = false; }
+    const conhece = document.querySelector('#rg-conhece .sel');
+    if (!conhece) { document.getElementById('err-conhece').style.display = 'block'; ok = false; }
+  }
+  return ok;
+}
+
+function mNext(n) {
+  clearErrors();
+  const currentStep = n - 1;
+  if (currentStep >= 1 && !validateStep(currentStep)) return;
+  document.querySelectorAll('.mform-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('ms' + n).classList.add('active');
+  document.querySelector('.modal').scrollTop = 0;
+  const dots = ['md1','md2','md3','md4'];
+  dots.forEach((id, i) => {
+    const d = document.getElementById(id);
+    d.classList.remove('active','done');
+    if (i + 1 < n) d.classList.add('done');
+    else if (i + 1 === n) d.classList.add('active');
+  });
+}
+
+function submitForm() {
+  clearErrors();
+  const crenca = document.querySelector('#rg-crenca .sel');
+  if (!crenca) { document.getElementById('err-crenca').style.display = 'block'; return; }
+  document.querySelectorAll('.mform-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('msuccess').classList.add('show');
+}
+
+function pickRadio(el, grp, val) {
+  document.querySelectorAll('#rg-' + grp + ' .radio-opt').forEach(r => r.classList.remove('sel'));
+  el.classList.add('sel');
+  el.setAttribute('data-val', val);
+}
+
+function toggleChk(el) { }
+</script>
 </body>
 </html>
