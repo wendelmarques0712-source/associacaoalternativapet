@@ -121,8 +121,23 @@ nav {
 .hero h1 .highlight { color: var(--orange); }
 .hero-sub {
   font-size: clamp(0.95rem,1.3vw,1.1rem); font-weight: 300;
-  color: rgba(255,255,255,0.85); max-width: 500px; line-height: 1.7; margin-bottom: 2rem;
+  color: rgba(255,255,255,0.85); max-width: 500px; line-height: 1.7; margin-bottom: 1.5rem;
 }
+
+/* Hero Bullets */
+.hero-bullets {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.hero-bullet {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9); font-size: 0.78rem; font-weight: 500;
+  padding: 6px 14px; border-radius: 100px;
+}
+.hero-bullet i { color: var(--orange); font-size: 0.7rem; }
+.hero-bullet-sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+
 .hero-btns {
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
   animation: fadeUp .5s .3s ease both;
@@ -183,6 +198,31 @@ h2.sec-title {
 }
 .sec-desc { font-size: 1rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; max-width: 550px; }
 
+/* DOBRA 2 - MANIFESTO */
+.manifesto-sec {
+  background: var(--green-dark);
+  text-align: center;
+  padding: clamp(4rem,7vw,6rem) clamp(2rem,6vw,3rem);
+}
+.manifesto-sec .inner { max-width: 780px; }
+.manifesto-icon { font-size: 3rem; margin-bottom: 1.5rem; opacity: 0.9; }
+.manifesto-sec h2 {
+  font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800;
+  color: white; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+}
+.manifesto-sec h2 span { color: var(--orange); }
+.manifesto-text {
+  font-size: clamp(0.95rem,1.2vw,1.05rem); font-weight: 300;
+  color: rgba(255,255,255,0.8); line-height: 1.85; margin-bottom: 1.25rem;
+}
+.manifesto-text strong { color: white; font-weight: 600; }
+.manifesto-highlight {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(239,117,34,0.15); border: 1px solid rgba(239,117,34,0.3);
+  color: var(--orange); font-size: 0.9rem; font-weight: 600;
+  padding: 12px 24px; border-radius: 100px; margin-top: 1.5rem;
+}
+
 /* SEÇÃO SINTOMAS */
 .sintomas-sec { 
   background: var(--sand); 
@@ -237,16 +277,79 @@ h2.sec-title {
 
 /* PROCESSO (ETAPAS) */
 .processo-sec { background: var(--cream); }
-.steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 3rem;}
+.processo-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;}
+.processo-header-right { max-width: 340px; font-size: 0.95rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; padding-top: 0.5rem; }
+.steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 2rem;}
 .step-card {
   background: white; border-radius: var(--r-lg); padding: 2rem 1.5rem;
   border: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; height: 100%; transition: transform .3s; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 .step-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-.step-icon-box { width: 70px; height: 70px; background: var(--green-pale); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; font-size: 1.8rem; color: var(--green-dark); }
-.step-badge-mini { display: inline-block; background: var(--green-pale); color: var(--green-mid); font-size: 0.65rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; margin-bottom: 12px; align-self: flex-start;}
-.step-title-text { font-size: 1.15rem; font-weight: 800; color: var(--green-dark); line-height: 1.2; margin-bottom: auto; }
-.step-more { margin-top: 2rem; font-size: 0.8rem; font-weight: 600; color: var(--green-mid); display: flex; align-items: center; gap: 6px; text-decoration: none; }
+.step-icon-box { width: 70px; height: 70px; background: var(--green-pale); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.8rem; color: var(--green-dark); }
+.step-badge-mini { display: inline-block; background: var(--green-pale); color: var(--green-mid); font-size: 0.65rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; margin-bottom: 10px; align-self: flex-start;}
+.step-title-text { font-size: 1.05rem; font-weight: 800; color: var(--green-dark); line-height: 1.2; margin-bottom: 0.75rem; }
+.step-desc-text { font-size: 0.82rem; color: var(--text-muted); font-weight: 400; line-height: 1.6; flex: 1; }
+.step-more { margin-top: 1.5rem; font-size: 0.8rem; font-weight: 600; color: var(--green-mid); display: flex; align-items: center; gap: 6px; text-decoration: none; cursor: pointer; background: none; border: none; font-family: var(--font); padding: 0; }
+.step-more:hover { color: var(--orange); }
+.processo-cta { text-align: center; margin-top: 2.5rem; }
+
+/* DOBRA 5 - BENEFÍCIOS DA ASSOCIAÇÃO */
+.beneficios-sec {
+  background: var(--green-dark);
+  padding: clamp(4rem,7vw,6rem) clamp(2rem,6vw,3rem);
+}
+.beneficios-header { text-align: center; margin-bottom: 3rem; }
+.beneficios-header h2 { color: white; }
+.beneficios-header h2 span { color: var(--orange); }
+.beneficios-header p { color: rgba(255,255,255,0.7); font-size: 1rem; font-weight: 300; line-height: 1.7; max-width: 540px; margin: 0 auto; }
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+.beneficio-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-lg); padding: 2rem 1.75rem;
+  transition: all .3s;
+}
+.beneficio-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); border-color: rgba(239,117,34,0.3); }
+.beneficio-icon { font-size: 2rem; margin-bottom: 1rem; }
+.beneficio-title { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.6rem; line-height: 1.3; }
+.beneficio-desc { font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.7; }
+.beneficios-cta { text-align: center; }
+
+/* PROVA SOCIAL */
+.provasocial-sec {
+  background: var(--cream);
+  padding: clamp(4rem,7vw,6rem) clamp(2rem,6vw,3rem);
+}
+.provasocial-header { text-align: center; margin-bottom: 3rem; }
+.provasocial-header h2 span { color: var(--orange); }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.testimonial-card {
+  background: white; border-radius: var(--r-lg); padding: 2rem;
+  border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  display: flex; flex-direction: column; gap: 1.25rem;
+  transition: transform .3s;
+}
+.testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.testimonial-stars { color: var(--orange); font-size: 0.9rem; letter-spacing: 2px; }
+.testimonial-text {
+  font-size: 0.92rem; color: var(--text-body); font-weight: 300; line-height: 1.75;
+  font-style: italic; flex: 1;
+}
+.testimonial-author { border-top: 1px solid var(--border-light); padding-top: 1rem; }
+.testimonial-author strong { display: block; font-size: 0.9rem; color: var(--text-dark); font-weight: 700; }
+.testimonial-author span {
+  display: inline-block; margin-top: 4px;
+  font-size: 0.75rem; font-weight: 600; color: var(--green-light);
+  background: var(--green-pale); padding: 3px 10px; border-radius: 100px;
+}
 
 /* QUEM SOMOS */
 .qs-sec { background: var(--sand); }
@@ -283,11 +386,13 @@ footer {
 .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
 .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500; }
 
-/* MODAL BRANCO */
+/* ================================
+   MODAL CORRIGIDO
+================================ */
 .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(7, 18, 10, 0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1rem; }
 .modal-overlay.open { display: flex; }
-.modal { background: var(--white); border-radius: var(--r-xl); width: 100%; max-width: 540px; max-height: 90svh; overflow-y: auto; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
-.modal-head { background: var(--white); padding: 2.5rem 2.5rem 1.5rem; text-align: center; border-bottom: 1px solid var(--border-light); }
+.modal { background: var(--white); border-radius: var(--r-xl); width: 100%; max-width: 560px; max-height: 92svh; overflow-y: auto; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
+.modal-head { background: var(--white); padding: 2.5rem 2.5rem 1.5rem; text-align: center; border-bottom: 1px solid var(--border-light); position: relative; }
 .modal-icons { display: flex; justify-content: center; gap: -8px; margin-bottom: 1.25rem; }
 .modal-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--white); }
 .modal-icon:first-child { background: var(--green-pale); margin-right: -12px; z-index: 2; color: var(--green-dark);}
@@ -295,13 +400,31 @@ footer {
 .modal-head h3 { font-size: 1.25rem; font-weight: 800; color: var(--green-dark); line-height: 1.35; margin-bottom: 8px; }
 .modal-head h3 span { color: var(--orange); }
 .modal-head p { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
-.modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: rgba(0,0,0,0.04); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; color: var(--text-muted); font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: all .2s; }
-.modal-close:hover { background: rgba(0,0,0,0.08); color: var(--text-dark); }
+
+/* X fechar modal */
+.modal-close { 
+  position: absolute; top: 1.25rem; right: 1.25rem; 
+  background: rgba(0,0,0,0.06); border: none; border-radius: 50%; 
+  width: 38px; height: 38px; cursor: pointer; color: var(--text-muted); 
+  font-size: 1rem; display: flex; align-items: center; justify-content: center; 
+  transition: all .2s; z-index: 10; font-weight: 700;
+  line-height: 1;
+}
+.modal-close:hover { background: rgba(0,0,0,0.12); color: var(--text-dark); transform: scale(1.05); }
+
 .modal-body { padding: 2rem 2.5rem 2.5rem; }
+
+/* Progress bar */
 .modal-steps-bar { display: flex; gap: 6px; margin-bottom: 2rem; }
 .mstep-dot { height: 4px; border-radius: 2px; flex: 1; background: var(--border-light); transition: all .3s; }
 .mstep-dot.active { background: var(--orange); }
 .mstep-dot.done { background: var(--green-light); }
+
+/* Steps label */
+.mstep-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1.5rem; letter-spacing: 0.02em; }
+.mstep-label span { color: var(--orange); font-weight: 700; }
+
+/* Form fields */
 .fg { margin-bottom: 1.25rem; position: relative;}
 .flabel { display: block; font-size: 0.85rem; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
 .finput { width: 100%; padding: 12px 15px; font-family: var(--font); font-size: 0.95rem; background: #FAFAFA; border: 1.5px solid var(--border-light); border-radius: var(--r-sm); color: var(--text-dark); outline: none; transition: border .2s, box-shadow .2s; }
@@ -309,15 +432,38 @@ footer {
 .finput:focus { border-color: var(--orange); background: white; box-shadow: 0 0 0 3px rgba(239, 117, 34, 0.15); }
 .finput.error { border-color: #D32F2F; background: #FFF5F5; }
 .error-msg { color: #D32F2F; font-size: 0.8rem; font-weight: 500; margin-top: 5px; display: none; }
+
+/* Radio options */
 .radio-opts { display: flex; flex-direction: column; gap: 8px; }
-.radio-opt { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border: 1.5px solid var(--border-light); border-radius: var(--r-sm); cursor: pointer; transition: all .2s; font-size: 0.95rem; color: var(--text-body); background: #FAFAFA; }
+.radio-opt { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border: 1.5px solid var(--border-light); border-radius: var(--r-sm); cursor: pointer; transition: all .2s; font-size: 0.92rem; color: var(--text-body); background: #FAFAFA; }
 .radio-opt:hover { border-color: var(--orange); background: white; }
 .radio-opt.sel { border-color: var(--orange); background: var(--orange-pale); color: var(--orange-dark); font-weight: 600; }
 .rdot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #A1B2A6; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .2s; background: white;}
 .radio-opt.sel .rdot { border-color: var(--orange); background: var(--orange); }
 .radio-opt.sel .rdot::after { content: ''; width: 8px; height: 8px; background: white; border-radius: 50%; }
+
+/* Checkboxes (múltipla seleção de sintomas) */
+.chk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.chk-opt { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1.5px solid var(--border-light); border-radius: var(--r-sm); cursor: pointer; transition: all .2s; font-size: 0.84rem; color: var(--text-body); background: #FAFAFA; }
+.chk-opt:hover { border-color: var(--orange); background: white; }
+.chk-opt.sel { border-color: var(--orange); background: var(--orange-pale); color: var(--orange-dark); font-weight: 600; }
+.chkbox { width: 20px; height: 20px; border-radius: 5px; border: 2px solid #A1B2A6; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .2s; background: white; font-size: 0.65rem; color: transparent;}
+.chk-opt.sel .chkbox { border-color: var(--orange); background: var(--orange); color: white; }
+
+/* Outro pet field */
+.outro-pet-field { display: none; margin-top: 8px; }
+.outro-pet-field.show { display: block; }
+
+/* Textarea */
+.ftextarea { width: 100%; padding: 12px 15px; font-family: var(--font); font-size: 0.92rem; background: #FAFAFA; border: 1.5px solid var(--border-light); border-radius: var(--r-sm); color: var(--text-dark); outline: none; transition: border .2s, box-shadow .2s; resize: vertical; min-height: 90px; }
+.ftextarea:focus { border-color: var(--orange); background: white; box-shadow: 0 0 0 3px rgba(239, 117, 34, 0.15); }
+.fchar-count { font-size: 0.75rem; color: var(--text-muted); text-align: right; margin-top: 4px; }
+
+/* Steps */
 .mform-step { display: none; }
 .mform-step.active { display: block; }
+
+/* Buttons */
 .mbtn-row { display: flex; gap: 10px; margin-top: 2rem; }
 .mbtn-primary { flex: 1; background: var(--orange); color: white; font-family: var(--font); font-weight: 700; font-size: 1rem; padding: 14px 20px; border: none; border-radius: 100px; cursor: pointer; transition: all .2s; box-shadow: 0 4px 12px rgba(239, 117, 34, 0.25); }
 .mbtn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(239, 117, 34, 0.35); }
@@ -325,64 +471,57 @@ footer {
 .mbtn-back:hover { background: #f0f0f0; border-color: #A1B2A6; }
 .mprivacy { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 1.25rem; font-weight: 500; }
 .mprivacy i { color: var(--orange); margin-right: 4px; }
+
+/* Success */
 .msuccess { display: none; text-align: center; padding: 2rem 0; }
 .msuccess.show { display: block; }
 .msuccess-emoji { font-size: 4rem; margin-bottom: 1rem; }
 .msuccess h3 { font-size: 1.5rem; font-weight: 800; color: var(--green-dark); margin-bottom: 0.75rem; }
 .msuccess p { font-size: 1rem; font-weight: 400; color: var(--text-body); line-height: 1.6;}
 
-
 /* =========================================
-   RESPONSIVO MOBILE - CORREÇÕES SOLICITADAS 
+   RESPONSIVO MOBILE
 ========================================= */
 @media (max-width: 950px) {
-  /* Logo e Header Mobile */
   nav { padding: 0 1rem; height: 65px; }
-  .nav-logo img { max-height: 24px; } /* Logo bem menor no topo */
+  .nav-logo img { max-height: 24px; }
   .nav-btn { font-size: 0.75rem; padding: 10px 16px; }
 
-  /* Hero Mobile */
   .hero { grid-template-columns: 1fr; text-align: center; min-height: auto; }
   .hero-left { padding: 3rem 1.5rem; align-items: center; }
   .hero-right { padding: 0 1.5rem 4rem; }
   .social-badge { display: none; }
   .carousel-arrow { width: 36px; height: 36px; }
   
-  /* Botoes da Hero: Espaçados e Empilhados */
-  .hero-btns { 
-    flex-direction: column; 
-    width: 100%; 
-    gap: 15px; /* Mais espaço entre eles */
-  }
+  .hero-btns { flex-direction: column; width: 100%; gap: 15px; }
   .hero-btns button { width: 100%; justify-content: center; }
+  .hero-bullets { justify-content: center; }
 
-  /* Sintomas e Pets Animados Mobile */
   .sintomas-layout { grid-template-columns: 1fr; gap: 2rem; padding-left: 0; }
   .sintomas-grid { grid-template-columns: repeat(2, 1fr); }
   
-  /* Elementos flutuantes bem separados dos pets */
   .sint-anim-container { max-width: 250px; margin: 0 auto; padding-top: 40px; }
   .leaf-cannabis { top: -15%; right: 5%; font-size: 3rem; }
   .heart-health { top: 0%; left: 5%; font-size: 2rem; }
   .solid-dog { font-size: 10rem; }
   .solid-cat { font-size: 6rem; margin-left: -1rem; }
   
-  /* Centralizar o 9º botão (Cuidados paliativos) na grid de 2 colunas */
-  .sintomas-grid .sint-btn:last-child {
-    grid-column: 1 / -1;
-  }
+  .sintomas-grid .sint-btn:last-child { grid-column: 1 / -1; }
 
   .sint-cta { justify-content: center; flex-direction: column; width: 100%; gap: 15px; }
   .sint-cta button { width: 100%; justify-content: center; }
 
-  /* Quem Somos Mobile */
-  .steps-grid, .qs-body { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
   
-  /* Caixas ponta a ponta (100% largura) */
+  .beneficios-grid { grid-template-columns: 1fr; }
+
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  .qs-body { grid-template-columns: 1fr; }
+  
   .qs-stats-row { flex-direction: column; width: 100%; gap: 1rem; }
   .qs-stat-box { width: 100%; margin: 0; padding: 1.5rem; text-align: center;}
 
-  /* CTA Final Textos Ajustados */
   .cta-final h2 { font-size: 1.65rem; }
   .cta-final p { font-size: 0.95rem; }
   .cta-final-btns { flex-direction: column; width: 100%; gap: 15px; }
@@ -391,6 +530,13 @@ footer {
   .modal-body { padding: 1.5rem 1.5rem 2rem; }
   .modal-head { padding: 2rem 1.5rem 1.25rem; }
   .chk-grid { grid-template-columns: 1fr; }
+
+  .processo-header { flex-direction: column; gap: 1rem; }
+  .processo-header-right { max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .steps-grid { grid-template-columns: 1fr; }
 }
 
 @keyframes fadeUp {
@@ -408,11 +554,18 @@ footer {
   <button class="nav-btn" onclick="openModal()">Iniciar tratamento</button>
 </nav>
 
+<!-- DOBRA 1: HERO -->
 <section class="hero" style="padding:0;">
   <div class="hero-left">
     <div class="hero-pill-badge"><span class="dot"></span> Tratamentos naturais com cannabis medicinal</div>
-    <h1>Seu pet pode voltar a ter <span class="highlight">conforto e qualidade</span> de vida.</h1>
-    <p class="hero-sub">A Associação Alternativa oferece orientação especializada em cada etapa do tratamento, com acompanhamento profissional e produtos de qualidade — 100% online.</p>
+    <h1>Seu pet pode voltar a ter <span class="highlight">conforto e qualidade</span> de vida com a cannabis medicinal.</h1>
+    <p class="hero-sub">A Associação Alternativa oferece orientação em cada etapa, com acompanhamento profissional e produtos de qualidade.</p>
+    
+    <div class="hero-bullets">
+      <span class="hero-bullet"><i class="fas fa-check-circle"></i> Regularizada pela ANVISA</span>
+      <span class="hero-bullet"><i class="fas fa-heart"></i> Atendimento Humanizado</span>
+      <span class="hero-bullet"><i class="fas fa-paw"></i> +2.000 Pets Acolhidos</span>
+    </div>
     
     <div class="hero-btns">
       <button class="btn-orange" onclick="openModal()"><i class="fas fa-paw"></i> Quero iniciar o tratamento →</button>
@@ -424,11 +577,11 @@ footer {
     <div class="hero-carousel-container">
       <div class="social-badge badge-insta">
         <i class="fab fa-instagram"></i>
-        <div class="text">Mais de <strong>20 mil</strong>seguidores</div>
+        <div class="text">Mais de <strong>20 mil</strong> seguidores</div>
       </div>
       <div class="social-badge badge-patients">
         <i class="fas fa-user-check"></i>
-        <div class="text">Mais de <strong>20 mil</strong>pacientes</div>
+        <div class="text">Mais de <strong>20 mil</strong> pacientes</div>
       </div>
       
       <div class="hero-carousel" id="heroCarousel">
@@ -447,9 +600,22 @@ footer {
   </div>
 </section>
 
+<!-- DOBRA 2: MANIFESTO -->
+<section class="manifesto-sec">
+  <div class="inner">
+    <div class="manifesto-icon">🐾</div>
+    <h2>Sabemos o quanto é difícil tentar de tudo<br>e ainda não ver o seu pet <span>bem</span></h2>
+    <p class="manifesto-text">Consultas, mudanças na rotina, novos medicamentos, pesquisas na internet… E mesmo assim a sensação continua sendo a de ver o animal perdendo a disposição aos poucos.</p>
+    <p class="manifesto-text">Muitos tutores convivem diariamente com crises, dores, ansiedade e o medo de não conseguir ajudar como gostariam. Se você chegou até aqui, provavelmente já sabe como essa sensação é pesada. <strong>A Alternativa existe para caminhar junto com você a partir de agora.</strong></p>
+    <div class="manifesto-highlight">
+      <i class="fas fa-paw"></i> Mais de 2.000 pets já passaram pela nossa equipe em busca de uma nova possibilidade de cuidado com a cannabis medicinal veterinária.
+    </div>
+  </div>
+</section>
+
+<!-- DOBRA 3: SINTOMAS -->
 <section class="sintomas-sec">
   <div class="inner">
-    
     <div class="sintomas-header">
       <div class="sec-label-pill">Condições atendidas</div>
       <h2 class="sec-title">Quais sintomas ou condições seu pet está enfrentando?</h2>
@@ -457,7 +623,6 @@ footer {
     </div>
 
     <div class="sintomas-layout">
-      
       <div class="sint-anim-container">
         <i class="fas fa-cannabis floating-element leaf-cannabis"></i>
         <i class="fas fa-heart floating-element heart-health"></i>
@@ -469,17 +634,16 @@ footer {
 
       <div>
         <div class="sintomas-grid">
-          <button class="sint-btn" onclick="this.classList.toggle('sel')"><div class="sint-icon">🦴</div> <span class="sint-name">Dores persistentes</span></button>
-          <button class="sint-btn" onclick="this.classList.toggle('sel')"><div class="sint-icon">😰</div> <span class="sint-name">Ansiedade e agitação</span></button>
-          <button class="sint-btn" onclick="this.classList.toggle('sel')"><div class="sint-icon">⚡</div> <span class="sint-name">Crises convulsivas</span></button>
-          
-          <button class="sint-btn" onclick="this.classList.toggle('sel')"><div class="sint-icon">🐾</div> <span class="sint-name">Dif. de locomoção</span></button>
-          <button class="sint-btn" onclick="this.classList.toggle('sel')"><div class="sint-icon">😣</div> <span class="sint-name">Desconforto frequente</span></button>
-          <button class="sint-btn" onclick="this.classList.toggle('sel')"><div class="sint-icon">🧠</div> <span class="sint-name">Epilepsia</span></button>
-          
-          <button class="sint-btn" onclick="this.classList.toggle('sel')"><div class="sint-icon">🍽️</div> <span class="sint-name">Falta de apetite</span></button>
-          <button class="sint-btn" onclick="this.classList.toggle('sel')"><div class="sint-icon">😨</div> <span class="sint-name">Medo excessivo e fobias</span></button>
-          <button class="sint-btn" onclick="this.classList.toggle('sel')"><div class="sint-icon">❤️</div> <span class="sint-name">Cuidados paliativos</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🦴</div> <span class="sint-name">Dores persistentes</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">😰</div> <span class="sint-name">Ansiedade e agitação</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">⚡</div> <span class="sint-name">Crises convulsivas</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🐾</div> <span class="sint-name">Dif. de locomoção</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">😣</div> <span class="sint-name">Desconforto frequente</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🧠</div> <span class="sint-name">Epilepsia</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🍽️</div> <span class="sint-name">Falta de apetite</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">😨</div> <span class="sint-name">Medo excessivo e fobias</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">❤️</div> <span class="sint-name">Cuidados paliativos</span></button>
+          <button class="sint-btn" onclick="this.classList.toggle('sel');"><div class="sint-icon">🎗️</div> <span class="sint-name">Câncer</span></button>
         </div>
 
         <div class="sint-cta">
@@ -488,15 +652,15 @@ footer {
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
+<!-- DOBRA 4: PROCESSO -->
 <section class="processo-sec" id="como-funciona">
   <div class="inner">
     <div class="processo-header">
       <div>
-        <h2 class="sec-title">Passo a passo até <br>a solução</h2>
+        <h2 class="sec-title">O acompanhamento da Associação Alternativa<br>acontece em <span style="color:var(--orange)">cinco etapas simples</span></h2>
       </div>
       <div class="processo-header-right">
         <span class="badge" style="display:inline-block; background:var(--green-pale); color:var(--green-mid); font-size:0.75rem; font-weight:700; padding:6px 16px; border-radius:100px; margin-bottom:10px;">PROCESSO</span>
@@ -509,42 +673,136 @@ footer {
         <div class="step-icon-box">💬</div>
         <div class="step-badge-mini">ETAPA 1</div>
         <div class="step-title-text">Triagem Inicial</div>
-        <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
+        <p class="step-desc-text">Nossa equipe realiza um primeiro atendimento para entender a rotina, os sintomas e as necessidades do seu pet.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="step-card">
         <div class="step-icon-box">📄</div>
         <div class="step-badge-mini">ETAPA 2</div>
-        <div class="step-title-text">Documentos</div>
-        <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
+        <div class="step-title-text">Cadastro e Documentos</div>
+        <p class="step-desc-text">Você receberá um link para preencher os dados e enviar os documentos necessários para o cadastro.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="step-card">
         <div class="step-icon-box">🩺</div>
         <div class="step-badge-mini">ETAPA 3</div>
         <div class="step-title-text">Receita Médica</div>
-        <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
+        <p class="step-desc-text">Caso já possua receita veterinária, ela será validada pela equipe. Se ainda não possuir, nossa equipe indica profissionais parceiros.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="step-card">
         <div class="step-icon-box">💳</div>
         <div class="step-badge-mini">ETAPA 4</div>
         <div class="step-title-text">Taxa Associativa</div>
-        <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
+        <p class="step-desc-text">Após a validação, é realizada a contribuição associativa de R$ 15,00/mês para acesso ao acompanhamento e aos produtos.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="step-card">
         <div class="step-icon-box">📦</div>
         <div class="step-badge-mini">ETAPA 5</div>
-        <div class="step-title-text">Entrega</div>
-        <a href="#" class="step-more" onclick="openModal(); return false;">Mais informações</a>
+        <div class="step-title-text">Compra e Entrega</div>
+        <p class="step-desc-text">Com o cadastro aprovado, o pedido é liberado e enviado para o endereço informado. Após o recebimento, o tratamento segue com orientação de enfermeiro canábico.</p>
+        <button class="step-more" onclick="openModal()">Mais informações <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div class="processo-cta">
+      <button class="btn-orange" onclick="openModal()"><i class="fas fa-paw"></i> Quero começar agora!</button>
+    </div>
+  </div>
+</section>
+
+<!-- DOBRA 5: BENEFÍCIOS DA ASSOCIAÇÃO -->
+<section class="beneficios-sec">
+  <div class="inner">
+    <div class="beneficios-header">
+      <div class="sec-label-pill" style="background: rgba(255,255,255,0.15); color: white;">AO SE ASSOCIAR</div>
+      <h2 class="sec-title" style="color: white; margin-top: 0.5rem;">Ao se associar, você terá <span>como tutor:</span></h2>
+    </div>
+    
+    <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="beneficio-icon">🩺</div>
+        <div class="beneficio-title">Suporte especializado</div>
+        <p class="beneficio-desc">Conte com profissionais preparados para acompanhar cada etapa do tratamento do seu pet.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">💊</div>
+        <div class="beneficio-title">Tratamento personalizado</div>
+        <p class="beneficio-desc">Receba orientações e produtos ajustados conforme os sintomas e necessidades do seu pet.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">🌱</div>
+        <div class="beneficio-title">Impacto social</div>
+        <p class="beneficio-desc">Ao se associar, você também ajuda outras famílias a ampliarem o acesso à cannabis medicinal.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">📚</div>
+        <div class="beneficio-title">Conteúdo exclusivo</div>
+        <p class="beneficio-desc">Acesso a conteúdos sobre cannabis medicinal veterinária e cuidados durante o tratamento.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">🤝</div>
+        <div class="beneficio-title">Comunidade de acolhimento</div>
+        <p class="beneficio-desc">Faça parte de uma rede de tutores que compartilham experiências e apoio durante o tratamento.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">🔬</div>
+        <div class="beneficio-title">Participação em pesquisas</div>
+        <p class="beneficio-desc">Você estará colaborando com o avanço do uso da cannabis medicinal no cuidado animal.</p>
+      </div>
+    </div>
+
+    <div class="beneficios-cta">
+      <button class="btn-orange" onclick="openModal()"><i class="fas fa-paw"></i> Quero me associar!</button>
+    </div>
+  </div>
+</section>
+
+<!-- DOBRA 6: PROVA SOCIAL -->
+<section class="provasocial-sec">
+  <div class="inner">
+    <div class="provasocial-header">
+      <div class="sec-label-pill">Depoimentos</div>
+      <h2 class="sec-title">Veja o que dizem os tutores que confiaram<br>no tratamento da <span>Associação Alternativa</span></h2>
+    </div>
+    
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Em poucas semanas, já percebemos mudanças no comportamento do meu cachorro. As dores diminuíram, ele voltou a brincar, ficou mais ativo e hoje tem muito mais qualidade de vida."</p>
+        <div class="testimonial-author">
+          <strong>Ana Paula Borgmann</strong>
+          <span>Óleo para epilepsia</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Meu gato estava sem comer, internado e eu já tinha decidido pela eutanásia. Depois do início do tratamento com cannabis medicinal, ele voltou a se alimentar e hoje continua aqui com a gente."</p>
+        <div class="testimonial-author">
+          <strong>Holinda Zacharia</strong>
+          <span>Óleo para dores persistentes</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Depois do tratamento, minha cachorra voltou a comer sozinha, beber água e já não ficava mais perdida após as crises. Para mim, foi impressionante."</p>
+        <div class="testimonial-author">
+          <strong>Vitória Vázquez</strong>
+          <span>Óleo para epilepsia</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- DOBRA 7: QUEM SOMOS -->
 <section class="qs-sec">
   <div class="inner">
     <div class="qs-header">
       <div class="qs-header-left">
         <div class="sec-label-pill">QUEM SOMOS?</div>
-        <h2 class="sec-title">Uma associação<br>com <span>propósito!</span></h2>
+        <h2 class="sec-title">Uma associação que nasceu<br>para <span style="color:var(--orange)">transformar vidas!</span></h2>
       </div>
       <div class="qs-stats-row">
         <div class="qs-stat-box">
@@ -553,19 +811,19 @@ footer {
         </div>
         <div class="qs-stat-box">
           <h3>+5.000</h3>
-          <p>associados ativos para tratamento de <strong>patologias humanas</strong></p>
+          <p>associados ativos em <strong>tratamentos humanos</strong></p>
         </div>
         <div class="qs-stat-box">
           <h3>+2.000</h3>
-          <p>associados para tratamento de <strong>patologias animais</strong></p>
+          <p>pets acolhidos pela <strong>Associação Alternativa</strong></p>
         </div>
       </div>
     </div>
     
     <div class="qs-body">
       <div class="qs-text-blocks">
-        <p>Desde 2021, a <strong>Associação Alternativa</strong> conecta pacientes, tutores e prescritores como uma organização sem fins lucrativos. Oferecemos suporte humanizado e seguro a famílias em busca de terapias complementares que respeitam a ciência, a legislação e o bem-estar individual animal.</p>
-        <p>Somos mais do que uma associação — <strong>somos uma comunidade unida pelo desejo de transformar vidas.</strong> Acreditamos que a saúde deve ser um direito, e que o tratamento com cannabis medicinal veterinária é uma ponte essencial para o bem-estar de animais que enfrentam condições médicas desafiadoras.</p>
+        <p>Desde 2021, a <strong>Associação Alternativa</strong> conecta pacientes, tutores e prescritores através de um acolhimento responsável e acessível no tratamento com cannabis medicinal. Hoje, apoiamos famílias que buscam mais qualidade de vida, tanto no cuidado humano quanto veterinário.</p>
+        <p>Mais do que uma associação — <strong>somos uma rede de apoio formada pelo desejo de oferecer novas possibilidades de cuidado com responsabilidade, segurança e acolhimento.</strong></p>
       </div>
       <div>
         <div class="qs-carousel" id="aboutCarousel">
@@ -578,12 +836,13 @@ footer {
   </div>
 </section>
 
+<!-- DOBRA 8: CTA FINAL -->
 <section class="cta-final">
   <div class="inner">
-    <h2>Chegou a hora de buscar o bem-estar de <br><span>quem sempre esteve ao seu lado.</span></h2>
-    <p>Tratamento acessível, seguro e 100% online. Especialistas prontos para te atender.</p>
+    <h2>Chegou a hora de buscar o bem-estar de <br><span style="color:var(--orange)">quem sempre esteve ao seu lado.</span></h2>
+    <p>Preencha as informações e fale com nossa equipe para iniciar o tratamento!</p>
     <div class="cta-final-btns">
-      <button class="btn-orange" onclick="openModal()" style="background: white; color: var(--green-dark);"><i class="fas fa-paw"></i> Iniciar meu tratamento agora →</button>
+      <button class="btn-orange" onclick="openModal()" style="background: white; color: var(--green-dark);"><i class="fas fa-paw"></i> Quero iniciar o tratamento do meu pet! →</button>
       <button class="btn-outline-white" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver o passo a passo</button>
     </div>
   </div>
@@ -599,9 +858,11 @@ footer {
   <p style="margin-top: 1rem;">© 2026 Associação Alternativa. Todos os direitos reservados.</p>
 </footer>
 
+<!-- MODAL CORRIGIDO -->
 <div class="modal-overlay" id="modal-overlay" onclick="if(event.target==this)closeModal()">
   <div class="modal">
     <div class="modal-head">
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">✕</button>
       <div class="modal-icons">
         <div class="modal-icon"><i class="fas fa-stethoscope"></i></div>
         <div class="modal-icon"><i class="fas fa-paw"></i></div>
@@ -615,9 +876,12 @@ footer {
         <div class="mstep-dot active" id="md1"></div>
         <div class="mstep-dot" id="md2"></div>
         <div class="mstep-dot" id="md3"></div>
+        <div class="mstep-dot" id="md4"></div>
       </div>
 
+      <!-- STEP 1: Dados pessoais -->
       <div class="mform-step active" id="ms1">
+        <div class="mstep-label">Passo <span>1 de 4</span> — Seus dados</div>
         <div class="fg">
           <label class="flabel">Nome completo *</label>
           <input class="finput" type="text" id="f-nome" placeholder="Nome e sobrenome">
@@ -630,8 +894,8 @@ footer {
         </div>
         <div class="fg">
           <label class="flabel">WhatsApp (com DDD) *</label>
-          <input class="finput" type="tel" id="f-whats" placeholder="(11) 99999-9999" maxlength="15" onkeyup="maskPhone(this)">
-          <div class="error-msg" id="err-whats">Insira um número válido.</div>
+          <input class="finput" type="tel" id="f-whats" placeholder="(11) 99999-9999" maxlength="15" oninput="maskPhone(this)">
+          <div class="error-msg" id="err-whats">Insira um número válido com DDD.</div>
         </div>
         <div class="mbtn-row">
           <button class="mbtn-primary" onclick="mNext(2)">Próximo →</button>
@@ -639,15 +903,37 @@ footer {
         <p class="mprivacy"><i class="fas fa-lock"></i> Seus dados estão protegidos.</p>
       </div>
 
+      <!-- STEP 2: Sobre o pet -->
       <div class="mform-step" id="ms2">
+        <div class="mstep-label">Passo <span>2 de 4</span> — Sobre o pet</div>
         <div class="fg">
-          <label class="flabel">Seu pet já tem diagnóstico? *</label>
-          <div class="radio-opts" id="rg-diag">
-            <label class="radio-opt" onclick="pickRadio(this,'diag','sim')"><div class="rdot"></div>✅ Sim, já possui diagnóstico</label>
-            <label class="radio-opt" onclick="pickRadio(this,'diag','invest')"><div class="rdot"></div>🔍 Ainda está em investigação</label>
-            <label class="radio-opt" onclick="pickRadio(this,'diag','nao')"><div class="rdot"></div>❌ Não possui diagnóstico</label>
+          <label class="flabel">Qual pet receberá o acompanhamento? *</label>
+          <div class="radio-opts" id="rg-pet">
+            <label class="radio-opt" onclick="pickRadio(this,'pet','cachorro'); document.getElementById('outro-pet-field').classList.remove('show');"><div class="rdot"></div>🐶 Cachorro</label>
+            <label class="radio-opt" onclick="pickRadio(this,'pet','gato'); document.getElementById('outro-pet-field').classList.remove('show');"><div class="rdot"></div>🐱 Gato</label>
+            <label class="radio-opt" onclick="pickRadio(this,'pet','outro'); document.getElementById('outro-pet-field').classList.add('show');"><div class="rdot"></div>🐾 Outro pet</label>
           </div>
-          <div class="error-msg" id="err-diag">Selecione uma opção.</div>
+          <div class="outro-pet-field" id="outro-pet-field">
+            <input class="finput" type="text" id="f-outro-pet" placeholder="Qual é o seu pet?" style="margin-top:8px;">
+          </div>
+          <div class="error-msg" id="err-pet">Selecione o tipo de pet.</div>
+        </div>
+        <div class="fg">
+          <label class="flabel">Quais sintomas ou condições seu pet apresenta? <span style="font-weight:400; color: var(--text-muted)">(pode selecionar mais de um)</span></label>
+          <div class="chk-grid" id="chk-sintomas">
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🦴 Dores persistentes</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>😰 Ansiedade e agitação</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>⚡ Crises convulsivas</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🧠 Epilepsia</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🐾 Dificuldade de locomoção</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>😣 Desconforto frequente</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🍽️ Falta de apetite</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>😨 Medo excessivo e fobias</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>❤️ Cuidados paliativos</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);"><div class="chkbox">✓</div>🎗️ Câncer</label>
+            <label class="chk-opt" onclick="this.classList.toggle('sel'); toggleChk(this);" style="grid-column: 1 / -1;"><div class="chkbox">✓</div>➕ Outros sintomas</label>
+          </div>
+          <div class="error-msg" id="err-sint">Selecione ao menos um sintoma.</div>
         </div>
         <div class="mbtn-row">
           <button class="mbtn-back" onclick="mNext(1)">← Voltar</button>
@@ -655,7 +941,36 @@ footer {
         </div>
       </div>
 
+      <!-- STEP 3: Diagnóstico -->
       <div class="mform-step" id="ms3">
+        <div class="mstep-label">Passo <span>3 de 4</span> — Diagnóstico</div>
+        <div class="fg">
+          <label class="flabel">Já possui diagnóstico? *</label>
+          <div class="radio-opts" id="rg-diag">
+            <label class="radio-opt" onclick="pickRadio(this,'diag','sim')"><div class="rdot"></div>✅ Sim, já possui diagnóstico</label>
+            <label class="radio-opt" onclick="pickRadio(this,'diag','invest')"><div class="rdot"></div>🔍 Ainda em investigação</label>
+          </div>
+          <div class="error-msg" id="err-diag">Selecione uma opção.</div>
+        </div>
+        <div class="fg">
+          <label class="flabel">Conhece a cannabis medicinal? *</label>
+          <div class="radio-opts" id="rg-conhece">
+            <label class="radio-opt" onclick="pickRadio(this,'conhece','sim')"><div class="rdot"></div>✅ Sim, já conheço</label>
+            <label class="radio-opt" onclick="pickRadio(this,'conhece','escutou')"><div class="rdot"></div>👂 Já escutei falar</label>
+            <label class="radio-opt" onclick="pickRadio(this,'conhece','acredita')"><div class="rdot"></div>💚 Sim, acredito que pode ajudar</label>
+            <label class="radio-opt" onclick="pickRadio(this,'conhece','duvidas')"><div class="rdot"></div>🤔 Tenho dúvidas mas quero entender melhor</label>
+          </div>
+          <div class="error-msg" id="err-conhece">Selecione uma opção.</div>
+        </div>
+        <div class="mbtn-row">
+          <button class="mbtn-back" onclick="mNext(2)">← Voltar</button>
+          <button class="mbtn-primary" onclick="mNext(4)">Próximo →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Intenção final -->
+      <div class="mform-step" id="ms4">
+        <div class="mstep-label">Passo <span>4 de 4</span> — Última etapa</div>
         <div class="fg">
           <label class="flabel">O que você busca com a cannabis para seu pet? *</label>
           <div class="radio-opts" id="rg-crenca">
@@ -664,17 +979,22 @@ footer {
           </div>
           <div class="error-msg" id="err-crenca">Selecione uma opção.</div>
         </div>
-        <div class="mbtn-row">
-          <button class="mbtn-back" onclick="mNext(2)">← Voltar</button>
-          <button class="mbtn-primary" onclick="submitForm()">Falar com especialista</button>
+        <div class="fg">
+          <label class="flabel">Alguma observação adicional? <span style="font-weight:400;color:var(--text-muted)">(opcional)</span></label>
+          <textarea class="ftextarea" id="f-obs" maxlength="200" placeholder="Conte-nos mais sobre o seu pet ou situação..." oninput="document.getElementById('char-count').textContent = this.value.length + '/200'"></textarea>
+          <div class="fchar-count" id="char-count">0/200</div>
         </div>
-        <p class="mprivacy"><i class="fas fa-lock"></i> Não fazemos spam.</p>
+        <div class="mbtn-row">
+          <button class="mbtn-back" onclick="mNext(3)">← Voltar</button>
+          <button class="mbtn-primary" onclick="submitForm()">Falar com especialista 🐾</button>
+        </div>
+        <p class="mprivacy"><i class="fas fa-lock"></i> Não fazemos spam. Seus dados estão seguros.</p>
       </div>
 
       <div class="msuccess" id="msuccess">
         <div class="msuccess-emoji">🎉</div>
         <h3>Recebido!</h3>
-        <p>Em breve nossa equipe entrará em contato via WhatsApp para orientar você e seu pet.</p>
+        <p>Em breve nossa equipe entrará em contato via WhatsApp para orientar você e seu pet na jornada de tratamento.</p>
       </div>
     </div>
   </div>
@@ -693,7 +1013,7 @@ function moveHero(step) {
   heroSlides[currentHero].classList.add('active');
   heroDots[currentHero].classList.add('active');
 }
-let heroInterval = setInterval(() => moveHero(1), 5000);
+setInterval(() => moveHero(1), 5000);
 
 // CARROSSEL QUEM SOMOS
 const qsSlides = document.querySelectorAll('#aboutCarousel img');
@@ -706,15 +1026,34 @@ if(qsSlides.length > 1) {
   }, 4000);
 }
 
-// MODAL E MÁSCARA
-function openModal() { document.getElementById('modal-overlay').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow=''; }
+// MODAL
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
+// Fechar com ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// MÁSCARA TELEFONE
 function maskPhone(i) {
-  let v = i.value.replace(/\D/g,'');
-  if(v.length>11) v=v.slice(0,11);
-  if(v.length>2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-  if(v.length>9) v = `${v.slice(0,9)}-${v.slice(9)}`;
+  let v = i.value.replace(/\D/g, '');
+  if (v.length > 11) v = v.slice(0, 11);
+  if (v.length > 10) {
+    v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+  } else if (v.length > 6) {
+    v = '(' + v.slice(0,2) + ') ' + v.slice(2,6) + '-' + v.slice(6);
+  } else if (v.length > 2) {
+    v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+  } else if (v.length > 0) {
+    v = '(' + v;
+  }
   i.value = v;
 }
 
@@ -723,26 +1062,88 @@ function clearErrors() {
   document.querySelectorAll('.finput').forEach(el => el.classList.remove('error'));
 }
 
+// VALIDAÇÕES POR STEP
+function validateStep(n) {
+  let ok = true;
+
+  if (n === 1) {
+    // Validar nome (precisa de nome e sobrenome)
+    const nome = document.getElementById('f-nome').value.trim();
+    if (nome.split(' ').filter(p => p.length > 0).length < 2) {
+      document.getElementById('err-nome').style.display = 'block';
+      document.getElementById('f-nome').classList.add('error');
+      ok = false;
+    }
+    // Validar email
+    const email = document.getElementById('f-email').value.trim();
+    const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailReg.test(email)) {
+      document.getElementById('err-email').style.display = 'block';
+      document.getElementById('f-email').classList.add('error');
+      ok = false;
+    }
+    // Validar telefone
+    const whats = document.getElementById('f-whats').value.replace(/\D/g, '');
+    if (whats.length < 10) {
+      document.getElementById('err-whats').style.display = 'block';
+      document.getElementById('f-whats').classList.add('error');
+      ok = false;
+    }
+  }
+
+  if (n === 2) {
+    // Validar tipo de pet
+    const pet = document.querySelector('#rg-pet .sel');
+    if (!pet) {
+      document.getElementById('err-pet').style.display = 'block';
+      ok = false;
+    } else {
+      // Se "outro pet" selecionado, checar se preencheu o campo
+      const petVal = pet.getAttribute('data-val') || '';
+      if (petVal === 'outro') {
+        const outroPet = document.getElementById('f-outro-pet').value.trim();
+        if (!outroPet) {
+          document.getElementById('f-outro-pet').classList.add('error');
+          document.getElementById('err-pet').textContent = 'Por favor, informe o tipo de pet.';
+          document.getElementById('err-pet').style.display = 'block';
+          ok = false;
+        }
+      }
+    }
+    // Validar sintomas (ao menos 1)
+    const sintSel = document.querySelectorAll('#chk-sintomas .sel');
+    if (sintSel.length === 0) {
+      document.getElementById('err-sint').style.display = 'block';
+      ok = false;
+    }
+  }
+
+  if (n === 3) {
+    const diag = document.querySelector('#rg-diag .sel');
+    if (!diag) { document.getElementById('err-diag').style.display = 'block'; ok = false; }
+    const conhece = document.querySelector('#rg-conhece .sel');
+    if (!conhece) { document.getElementById('err-conhece').style.display = 'block'; ok = false; }
+  }
+
+  return ok;
+}
+
 function mNext(n) {
   clearErrors();
-  if (n === 2) {
-    let nome = document.getElementById('f-nome').value.trim();
-    let whats = document.getElementById('f-whats').value.replace(/\D/g, '');
-    let ok = true;
-    if(nome.split(' ').length < 2) { document.getElementById('err-nome').style.display='block'; ok=false; }
-    if(whats.length < 10) { document.getElementById('err-whats').style.display='block'; ok=false; }
-    if(!ok) return;
-  }
-  if (n === 3) {
-    let diag = document.querySelector('#rg-diag .sel');
-    if(!diag) { document.getElementById('err-diag').style.display='block'; return; }
-  }
-  
+  const currentStep = n - 1; // step que acabou de ser preenchido
+  if (currentStep >= 1 && !validateStep(currentStep)) return;
+
+  const totalSteps = 4;
   document.querySelectorAll('.mform-step').forEach(s => s.classList.remove('active'));
   document.getElementById('ms' + n).classList.add('active');
-  
-  ['md1','md2','md3'].forEach((id, i) => {
-    var d = document.getElementById(id);
+
+  // Scroll pro topo do modal
+  document.querySelector('.modal').scrollTop = 0;
+
+  // Atualiza dots
+  const dots = ['md1','md2','md3','md4'];
+  dots.forEach((id, i) => {
+    const d = document.getElementById(id);
     d.classList.remove('active','done');
     if (i + 1 < n) d.classList.add('done');
     else if (i + 1 === n) d.classList.add('active');
@@ -751,8 +1152,8 @@ function mNext(n) {
 
 function submitForm() {
   clearErrors();
-  let crenca = document.querySelector('#rg-crenca .sel');
-  if (!crenca) { document.getElementById('err-crenca').style.display='block'; return; }
+  const crenca = document.querySelector('#rg-crenca .sel');
+  if (!crenca) { document.getElementById('err-crenca').style.display = 'block'; return; }
   document.querySelectorAll('.mform-step').forEach(s => s.classList.remove('active'));
   document.getElementById('msuccess').classList.add('show');
 }
@@ -760,6 +1161,11 @@ function submitForm() {
 function pickRadio(el, grp, val) {
   document.querySelectorAll('#rg-' + grp + ' .radio-opt').forEach(r => r.classList.remove('sel'));
   el.classList.add('sel');
+  el.setAttribute('data-val', val);
+}
+
+function toggleChk(el) {
+  // Apenas visual, a seleção já acontece via classList.toggle no onclick
 }
 </script>
 </body>
